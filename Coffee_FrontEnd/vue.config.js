@@ -1,3 +1,5 @@
+const path = require('path')
+
 module.exports = {
   configureWebpack: {
     module: {
@@ -10,6 +12,11 @@ module.exports = {
           ]
         }
       ]
+    },
+    resolve: {
+      alias: {
+        '@': path.resolve(__dirname, 'src')
+      }
     }
   }
 } 

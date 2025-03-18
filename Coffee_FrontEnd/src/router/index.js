@@ -2,6 +2,11 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import WorldMap from '../views/WorldMap.vue'
+import About from '../views/About.vue'
+import Plantation from '../views/Plantation.vue'
+import Explore from '../views/Explore.vue'
+import FarmerSupport from '../views/FarmerSupport.vue'
+import Login from '../views/Login.vue'
 
 Vue.use(VueRouter)
 
@@ -12,9 +17,34 @@ const routes = [
     component: Home
   },
   {
+    path: '/about',
+    name: 'About',
+    component: About
+  },
+  {
     path: '/world-map',
     name: 'WorldMap',
     component: WorldMap
+  },
+  {
+    path: '/plantation',
+    name: 'Plantation',
+    component: Plantation
+  },
+  {
+    path: '/explore',
+    name: 'Explore',
+    component: Explore
+  },
+  {
+    path: '/farmer-support',
+    name: 'FarmerSupport',
+    component: FarmerSupport
+  },
+  {
+    path: '/login',
+    name: 'Login',
+    component: Login
   }
 ]
 
