@@ -9,7 +9,7 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, './dist'),
-    publicPath: './',
+    publicPath: '/',
     filename: 'js/[name].[chunkhash].js',
     chunkFilename: 'js/[id].[chunkhash].js'
   },
@@ -67,7 +67,7 @@ module.exports = {
   plugins: [
     // 提取CSS到单独文件
     new ExtractTextPlugin('css/[name].[contenthash].css'),
-    
+
     // 生成HTML文件
     new HtmlWebpackPlugin({
       filename: 'index.html',
@@ -81,7 +81,7 @@ module.exports = {
       // 必要的，用于确保正确的资源注入顺序
       chunksSortMode: 'dependency'
     }),
-    
+
     // 拆分第三方库
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
@@ -96,11 +96,12 @@ module.exports = {
         )
       }
     }),
-    
+
     // 提取webpack运行时代码
     new webpack.optimize.CommonsChunkPlugin({
       name: 'manifest',
-      minChunks: Infinity
+      minChunks: Infinity,
+      filename: 'js/[name].[hash].js'
     })
   ]
 }
