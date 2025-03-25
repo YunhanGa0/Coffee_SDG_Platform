@@ -1,11 +1,14 @@
 package com.coffee_backend.service;
 
 import com.coffee_backend.dto.ApiResponse;
+import com.coffee_backend.dto.LoginResponse;
 import com.coffee_backend.dto.UserDTO;
 import com.coffee_backend.dto.UserRegisterRequest;
 import com.coffee_backend.entity.User;
 import com.coffee_backend.enumType.UserRole;
 import com.coffee_backend.repo.UserRepository;
+import com.coffee_backend.util.JwtUtil;
+
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -19,6 +22,9 @@ public class AuthService {
     private UserRepository userRepository;
     @Autowired
     private PasswordEncoder passwordEncoder;
+
+    @Autowired
+    private JwtUtil jwtUtil;
 
     private static final Pattern EMAIL_PATTERN = Pattern.compile("^[A-Za-z0-9+_.-]+@(.+)$");
 
@@ -61,5 +67,39 @@ public class AuthService {
         BeanUtils.copyProperties(savedUser, userDTO);
 
         return ApiResponse.success(userDTO);
+    }
+
+    public ApiResponse createAdminForTest() {
+        String adminUsername = "admin";
+        String adminPassword = "admin123";
+        String adminEmail = "admin@example.com";
+        
+        // 检查管理员是否已存在
+        if (!userRepository.existsByUsername(adminUsername)) {
+            // 创建管理员账户
+            User admin = new User();
+            admin.setUsername(adminUsername);
+            admin.setEmail(adminEmail);
+            admin.setPassword(passwordEncoder.encode(adminPassword));
+            admin.setRole(UserRole.ADMIN);
+            userRepository.save(admin);
+        }
+        
+        // 获取管理员账户
+        User admin = userRepository.findByUsername(adminUsername).get();
+        
+        // 生成令牌
+        String token = jwtUtil.generateToken(admin);
+        
+        // 创建登录响应
+        LoginResponse response = LoginResponse.builder()
+                .id(admin.getId())
+                .username(admin.getUsername())
+                .email(admin.getEmail())
+                .role(admin.getRole())
+                .token(token)
+                .build();
+        
+        return ApiResponse.success(response);
     }
 }
