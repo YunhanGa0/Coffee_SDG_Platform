@@ -1,6 +1,7 @@
 package com.coffee_backend.entity;
 
 import com.coffee_backend.enumType.SoilType;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
