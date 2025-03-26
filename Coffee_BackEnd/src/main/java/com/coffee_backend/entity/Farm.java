@@ -18,12 +18,15 @@ public class Farm {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id", nullable = false)
+    @OneToOne
+    @JoinColumn(name = "user_id", nullable = false, unique = true)
     private User user;
 
     @Column(name = "farm_name", nullable = false)
     private String farmName;
+
+    @Column(name = "country", nullable = false)
+    private String country; // 国家
 
     @Column(nullable = false)
     private String location;
@@ -55,6 +58,12 @@ public class Farm {
 
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
+
+    @Column(name="blog_title")
+    private String blogTitle; // 博客标题
+
+    @Column(name="blog_content", columnDefinition = "TEXT")
+    private String blogContent; // 博客内容
 
     @PrePersist
     protected void onCreate() {
