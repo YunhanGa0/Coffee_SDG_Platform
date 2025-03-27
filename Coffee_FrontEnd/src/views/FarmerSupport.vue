@@ -32,7 +32,7 @@
             <v-row no-gutters>
               <v-col cols="12" md="4">
                 <v-img
-                  /* :src="require('@/assets/pic/sustainable.jpg')" */
+                  :src="require('@/assets/pic/sustainable.jpg')"
                   height="100%"
                   class="fill-height"
                   style="background-color: #e8f5e9"
@@ -71,15 +71,15 @@
           <!-- 咖啡种植基金 -->
           <v-card class="mb-8 support-card" elevation="2">
             <v-row no-gutters>
-              <v-col cols="12" md="4" order-md="2">
+              <v-col cols="12" md="4">
                 <v-img
-                  /* :src="require('@/assets/pic/fund.jpg')" */
+                  :src="require('@/assets/pic/fund.png')"
                   height="100%"
                   class="fill-height"
                   style="background-color: #e8f5e9"
                 ></v-img>
               </v-col>
-              <v-col cols="12" md="8" order-md="1">
+              <v-col cols="12" md="8">
                 <v-card-text class="pa-6">
                   <h2 class="text-h4 mb-4 primary--text">咖啡种植基金</h2>
                   <div class="mb-4">
@@ -114,7 +114,7 @@
             <v-row no-gutters>
               <v-col cols="12" md="4">
                 <v-img
-                  /* :src="require('@/assets/pic/farm.jpg')" */
+                  :src="require('@/assets/pic/farm.jpg')"
                   height="100%"
                   class="fill-height"
                   style="background-color: #e8f5e9"
@@ -153,15 +153,15 @@
           <!-- 在线学习视频 -->
           <v-card class="mb-8 support-card" elevation="2">
             <v-row no-gutters>
-              <v-col cols="12" md="4" order-md="2">
+              <v-col cols="12" md="4">
                 <v-img
-                  /* :src="require('@/assets/pic/learning.jpg')" */
+                  :src="require('@/assets/pic/learning.jpg')"
                   height="100%"
                   class="fill-height"
                   style="background-color: #e8f5e9"
                 ></v-img>
               </v-col>
-              <v-col cols="12" md="8" order-md="1">
+              <v-col cols="12" md="8">
                 <v-card-text class="pa-6">
                   <h2 class="text-h4 mb-4 primary--text">在线学习视频</h2>
                   <div class="mb-4">
@@ -201,8 +201,10 @@ export default {
   name: 'FarmerSupport',
   methods: {
     navigateToDetail(section) {
-      // 后续实现导航到详情页的功能
-      console.log('Navigate to', section)
+      this.$router.push({
+        name: 'ArticleList',
+        query: { category: section }
+      })
     }
   }
 }
@@ -254,4 +256,4 @@ export default {
 .support-card:hover .v-image {
   transform: scale(1.05);
 }
-</style> 
+</style>

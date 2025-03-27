@@ -6,8 +6,11 @@ import About from '../views/About.vue'
 import Plantation from '../views/Plantation.vue'
 import Explore from '../views/Explore.vue'
 import FarmerSupport from '../views/FarmerSupport.vue'
-import Login from '../views/Login.vue'
+import Login from '../views/auth/Login.vue'
+import Register from '../views/auth/Register.vue'
 import ArticleEditor from '../views/ArticleEditor.vue'
+import ArticleList from '../views/ArticleList.vue'
+import store from '../store'
 
 Vue.use(VueRouter)
 
@@ -45,12 +48,25 @@ const routes = [
   {
     path: '/login',
     name: 'Login',
-    component: Login
+    component: Login,
+    meta: { guest: true }
+  },
+  {
+    path: '/register',
+    name: 'Register',
+    component: Register,
+    meta: { guest: true }
   },
   {
     path: '/article/editor',
     name: 'ArticleEditor',
-    component: ArticleEditor
+    component: ArticleEditor,
+    meta: { requiresAuth: true }
+  },
+  {
+    path: '/articles',
+    name: 'ArticleList',
+    component: ArticleList
   }
 ]
 
@@ -58,6 +74,34 @@ const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes
+})
+
+// 导航守卫
+router.beforeEach((to, from, next) => {
+  const isAuthenticated = store.getters['auth/isAuthenticated']
+
+  // 需要登录的页面
+  if (to.matched.some(record => record.meta.requiresAuth)) {
+    if (!isAuthenticated) {
+      next({
+        path: '/login',
+        query: { redirect: to.fullPath }
+      })
+    } else {
+      next()
+    }
+  }
+
+  // 游客页面（登录注册）
+  if (to.matched.some(record => record.meta.guest)) {
+    if (isAuthenticated) {
+      next('/')
+    } else {
+      next()
+    }
+  }
+
+  next()
 })
 
 export default router 
