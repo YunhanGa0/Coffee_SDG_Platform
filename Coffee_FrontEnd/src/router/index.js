@@ -7,6 +7,7 @@ import Plantation from '../views/Plantation.vue'
 import Explore from '../views/Explore.vue'
 import FarmerSupport from '../views/FarmerSupport.vue'
 import Login from '../views/Login.vue'
+import ArticleEditor from '../views/ArticleEditor.vue'
 
 Vue.use(VueRouter)
 
@@ -45,6 +46,11 @@ const routes = [
     path: '/login',
     name: 'Login',
     component: Login
+  },
+  {
+    path: '/article/editor',
+    name: 'ArticleEditor',
+    component: ArticleEditor
   }
 ]
 

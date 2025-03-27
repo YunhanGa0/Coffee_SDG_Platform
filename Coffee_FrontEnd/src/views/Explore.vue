@@ -10,11 +10,11 @@
             <v-card-subtitle class="pl-6 pb-0">
               发现全球顶级咖啡产地，体验独特的风味特点
             </v-card-subtitle>
-            
+
             <div class='wrapper'>
               <div class='chart' id='coffeeChart'></div>
             </div>
-            
+
             <v-card-text class="px-6 pt-4">
               <v-row>
                 <v-col cols="12" md="6">
@@ -40,7 +40,7 @@
                     </v-card-text>
                   </v-card>
                 </v-col>
-                
+
                 <v-col cols="12" md="6">
                   <v-card outlined>
                     <v-card-title class="subtitle-1 font-weight-bold">
@@ -53,7 +53,7 @@
                         <v-tab>烘焙</v-tab>
                         <v-tab>冲泡</v-tab>
                       </v-tabs>
-                      
+
                       <v-tabs-items v-model="infoTab">
                         <v-tab-item>
                           <div class="pa-2">
@@ -119,17 +119,15 @@ export default {
     initChart() {
       this.chart = echarts.init(document.getElementById('coffeeChart'))
       window.addEventListener('resize', this.resizeHandler)
-      
-      // 转换数据为ECharts格式
+
       const chartData = this.coffeeRegions.map(region => {
         return {
           name: this.translateCountryName(region.name),
           value: region.value,
-          // 存储原始数据以供点击时使用
           originalData: region
         }
       })
-      
+
       const option = {
         backgroundColor: '#fff',
         tooltip: {
@@ -172,16 +170,16 @@ export default {
                 color: '#fff'
               },
               itemStyle: {
-                areaColor: '#00704A'  // 星巴克绿色
+                areaColor: '#00704A'
               }
             },
             data: chartData
           }
         ]
       }
-      
+
       this.chart.setOption(option)
-      
+
       // 添加点击事件
       this.chart.on('click', (params) => {
         if (params.data && params.data.originalData) {
@@ -221,4 +219,4 @@ export default {
   height: 100%;
   padding: 10px;
 }
-</style> 
+</style>
