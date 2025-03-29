@@ -60,11 +60,6 @@ public class Farm {
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
 
-    @Column(name="blog_title")
-    private String blogTitle; // 博客标题
-
-    @Column(name="blog_content", columnDefinition = "TEXT")
-    private String blogContent; // 博客内容
 
     @PrePersist
     protected void onCreate() {
