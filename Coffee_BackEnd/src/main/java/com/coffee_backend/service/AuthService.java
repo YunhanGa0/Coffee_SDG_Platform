@@ -1,6 +1,7 @@
 package com.coffee_backend.service;
 
 import com.coffee_backend.dto.ApiResponse;
+import com.coffee_backend.dto.LoginRequest;
 import com.coffee_backend.dto.LoginResponse;
 import com.coffee_backend.dto.UserDTO;
 import com.coffee_backend.dto.UserRegisterRequest;
@@ -100,6 +101,47 @@ public class AuthService {
                 .token(token)
                 .build();
         
+        return ApiResponse.success(response);
+    }
+
+    public ApiResponse login(LoginRequest request) {
+        String username = request.getUsername();
+        String password = request.getPassword();
+
+        // 参数验证
+        if (username == null || username.trim().isEmpty()) {
+            return ApiResponse.error(400, "用户名不能为空");
+        }
+
+        if (password == null || password.trim().isEmpty()) {
+            return ApiResponse.error(400, "密码不能为空");
+        }
+
+        // 查找用户
+        User user = userRepository.findByUsername(username)
+                .orElse(null);
+
+        if (user == null) {
+            return ApiResponse.error(400, "用户不存在");
+        }
+
+        // 验证密码
+        if (!passwordEncoder.matches(password, user.getPassword())) {
+            return ApiResponse.error(400, "密码错误");
+        }
+
+        // 生成token
+        String token = jwtUtil.generateToken(user);
+
+        // 构建响应
+        LoginResponse response = LoginResponse.builder()
+                .id(user.getId())
+                .username(user.getUsername())
+                .email(user.getEmail())
+                .role(user.getRole())
+                .token(token)
+                .build();
+
         return ApiResponse.success(response);
     }
 }
