@@ -18,7 +18,7 @@ const routes = [
   {
     path: '/',
     name: 'Home',
-    component: Home
+    component: () => import('@/views/Home.vue')
   },
   {
     path: '/about',
@@ -48,13 +48,13 @@ const routes = [
   {
     path: '/login',
     name: 'Login',
-    component: Login,
+    component: () => import('@/views/auth/Login.vue'),
     meta: { guest: true }
   },
   {
     path: '/register',
     name: 'Register',
-    component: Register,
+    component: () => import('@/views/auth/Register.vue'),
     meta: { guest: true }
   },
   {
@@ -76,32 +76,16 @@ const router = new VueRouter({
   routes
 })
 
-// 导航守卫
+// 路由守卫
 router.beforeEach((to, from, next) => {
+  const requiresAuth = to.matched.some(record => record.meta.requiresAuth)
   const isAuthenticated = store.getters['auth/isAuthenticated']
 
-  // 需要登录的页面
-  if (to.matched.some(record => record.meta.requiresAuth)) {
-    if (!isAuthenticated) {
-      next({
-        path: '/login',
-        query: { redirect: to.fullPath }
-      })
-    } else {
-      next()
-    }
+  if (requiresAuth && !isAuthenticated) {
+    next('/login')
+  } else {
+    next()
   }
-
-  // 游客页面（登录注册）
-  if (to.matched.some(record => record.meta.guest)) {
-    if (isAuthenticated) {
-      next('/')
-    } else {
-      next()
-    }
-  }
-
-  next()
 })
 
 export default router 

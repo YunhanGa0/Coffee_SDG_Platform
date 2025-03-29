@@ -149,25 +149,38 @@ export default {
   methods: {
     ...mapActions('auth', ['register']),
 
-    async handleRegister() {
+    handleRegister() {
       if (this.$refs.form.validate()) {
         this.loading = true
-        try {
-          const res = await this.register({
-            username: this.formData.username,
-            email: this.formData.email,
-            password: this.formData.password
-          })
-          
-          console.log('注册响应：', res)
+        const userData = {
+          username: this.formData.username,
+          email: this.formData.email,
+          password: this.formData.password
+        }
+        
+        fetch('http://localhost:8080/api/auth/register', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify(userData)
+        })
+        .then(response => response.json())
+        .then(data => {
+          console.log('注册成功：', data)
           this.showMessage('注册成功', 'success')
-          this.$router.push('/')
-        } catch (error) {
+          setTimeout(() => {
+            this.$router.push('/login')
+          }, 1500)
+        })
+        .catch(error => {
           console.error('注册错误：', error)
           this.showMessage(error.message || '注册失败，请重试', 'error')
-        } finally {
+        })
+        .finally(() => {
           this.loading = false
-        }
+        })
       }
     },
 

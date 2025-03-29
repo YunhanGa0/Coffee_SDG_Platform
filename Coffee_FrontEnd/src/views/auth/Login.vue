@@ -7,7 +7,7 @@
             <v-toolbar-title>登录</v-toolbar-title>
           </v-toolbar>
           <v-card-text>
-            <v-form ref="form" v-model="valid" lazy-validation>
+            <v-form ref="form" v-model="valid" lazy-validation @submit.prevent="handleLogin">
               <v-text-field
                 v-model="formData.username"
                 :rules="usernameRules"
@@ -53,7 +53,8 @@
     <v-snackbar
       v-model="snackbar.show"
       :color="snackbar.color"
-      timeout="3000"
+      :timeout="3000"
+      top
     >
       {{ snackbar.text }}
       <template v-slot:action="{ attrs }">
@@ -83,12 +84,10 @@ export default {
       password: ''
     },
     usernameRules: [
-      v => !!v || '用户名不能为空',
-      v => v.length >= 3 || '用户名长度不能小于3个字符'
+      v => !!v || '用户名不能为空'
     ],
     passwordRules: [
-      v => !!v || '密码不能为空',
-      v => v.length >= 6 || '密码长度不能小于6个字符'
+      v => !!v || '密码不能为空'
     ],
     snackbar: {
       show: false,
@@ -108,7 +107,8 @@ export default {
           this.showMessage('登录成功', 'success')
           this.$router.push('/')
         } catch (error) {
-          this.showMessage(error.message || '登录失败', 'error')
+          console.error('登录错误：', error)
+          this.showMessage(error.message || '登录失败，请重试', 'error')
         } finally {
           this.loading = false
         }

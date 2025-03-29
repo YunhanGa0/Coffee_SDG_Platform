@@ -54,21 +54,67 @@
       >
         <v-icon>mdi-magnify</v-icon>
       </v-btn>
-      <v-btn
-        text
-        class="hidden-sm-and-down mr-4 action-btn"
-        color="primary"
-        to="/login"
-      >
-        登录
-      </v-btn>
-      <v-btn
-        color="primary"
-        class="hidden-sm-and-down action-btn"
-        to="/register"
-      >
-        注册
-      </v-btn>
+
+      <!-- 未登录时显示 -->
+      <template v-if="!isAuthenticated">
+        <v-btn
+          text
+          class="hidden-sm-and-down mr-4 action-btn"
+          color="primary"
+          to="/login"
+        >
+          <v-icon left>mdi-login</v-icon>
+          登录
+        </v-btn>
+        <v-btn
+          color="primary"
+          class="hidden-sm-and-down action-btn"
+          to="/register"
+        >
+          <v-icon left>mdi-account-plus</v-icon>
+          注册
+        </v-btn>
+      </template>
+
+      <!-- 已登录时显示 -->
+      <template v-else>
+        <v-menu offset-y>
+          <template v-slot:activator="{ on, attrs }">
+            <v-btn
+              text
+              class="hidden-sm-and-down action-btn"
+              color="primary"
+              v-bind="attrs"
+              v-on="on"
+            >
+              <v-icon left>mdi-account-circle</v-icon>
+              {{ currentUser ? currentUser.username : '用户' }}
+              <v-icon right>mdi-chevron-down</v-icon>
+            </v-btn>
+          </template>
+          <v-list>
+            <v-list-item to="/profile">
+              <v-list-item-icon>
+                <v-icon>mdi-account-edit</v-icon>
+              </v-list-item-icon>
+              <v-list-item-title>个人信息</v-list-item-title>
+            </v-list-item>
+            <v-list-item v-if="isAdmin" to="/article/editor">
+              <v-list-item-icon>
+                <v-icon>mdi-pencil</v-icon>
+              </v-list-item-icon>
+              <v-list-item-title>写文章</v-list-item-title>
+            </v-list-item>
+            <v-divider></v-divider>
+            <v-list-item @click="handleLogout">
+              <v-list-item-icon>
+                <v-icon>mdi-logout</v-icon>
+              </v-list-item-icon>
+              <v-list-item-title>退出登录</v-list-item-title>
+            </v-list-item>
+          </v-list>
+        </v-menu>
+      </template>
     </div>
 
     <!-- 搜索对话框 -->
@@ -101,37 +147,60 @@
       class="mobile-menu"
     >
       <v-list>
-        <v-list-item to="/" exact>
+        <v-list-item
+          v-for="item in menuItems"
+          :key="item.path"
+          :to="item.path"
+        >
           <v-list-item-content>
-            <v-list-item-title>首页</v-list-item-title>
+            <v-list-item-title>{{ item.title }}</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
-        <v-list-item to="/plantation">
-          <v-list-item-content>
-            <v-list-item-title>咖啡庄园</v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
-        <v-list-item to="/farmer-support">
-          <v-list-item-content>
-            <v-list-item-title>农民支持</v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
-        <v-list-item to="/explore">
-          <v-list-item-content>
-            <v-list-item-title>探索地图</v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
-        <v-list-item to="/about">
-          <v-list-item-content>
-            <v-list-item-title>关于我们</v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
+        <v-divider></v-divider>
+        <!-- 移动端的登录/注册按钮 -->
+        <template v-if="!isAuthenticated">
+          <v-list-item to="/login">
+            <v-list-item-icon>
+              <v-icon>mdi-login</v-icon>
+            </v-list-item-icon>
+            <v-list-item-title>登录</v-list-item-title>
+          </v-list-item>
+          <v-list-item to="/register">
+            <v-list-item-icon>
+              <v-icon>mdi-account-plus</v-icon>
+            </v-list-item-icon>
+            <v-list-item-title>注册</v-list-item-title>
+          </v-list-item>
+        </template>
+        <!-- 移动端的用户菜单 -->
+        <template v-else>
+          <v-list-item to="/profile">
+            <v-list-item-icon>
+              <v-icon>mdi-account-edit</v-icon>
+            </v-list-item-icon>
+            <v-list-item-title>个人信息</v-list-item-title>
+          </v-list-item>
+          <v-list-item v-if="isAdmin" to="/article/editor">
+            <v-list-item-icon>
+              <v-icon>mdi-pencil</v-icon>
+            </v-list-item-icon>
+            <v-list-item-title>写文章</v-list-item-title>
+          </v-list-item>
+          <v-list-item @click="handleLogout">
+            <v-list-item-icon>
+              <v-icon>mdi-logout</v-icon>
+            </v-list-item-icon>
+            <v-list-item-title>退出登录</v-list-item-title>
+          </v-list-item>
+        </template>
       </v-list>
     </v-navigation-drawer>
   </v-app-bar>
 </template>
 
 <script>
+import { mapGetters, mapActions } from 'vuex'
+
 export default {
   name: 'TopNavBar',
   data: () => ({
@@ -147,32 +216,27 @@ export default {
       { title: '关于我们', path: '/about' }
     ]
   }),
-  mounted() {
-    this.checkTransparency();
-    window.addEventListener('scroll', this.handleScroll);
-  },
-  beforeDestroy() {
-    window.removeEventListener('scroll', this.handleScroll);
-  },
-  watch: {
-    '$route': {
-      immediate: true,
-      handler(to) {
-        this.checkTransparency();
-      }
+
+  computed: {
+    ...mapGetters('auth', ['isAuthenticated', 'currentUser']),
+    isAdmin() {
+      return this.currentUser && this.currentUser.role === 'ADMIN'
     }
   },
+
   methods: {
-    checkTransparency() {
-      if (this.$route.path === '/') {
-        this.isTransparent = window.scrollY <= 50;
-      } else {
-        this.isTransparent = false;
+    ...mapActions('auth', ['logout']),
+    
+    async handleLogout() {
+      try {
+        await this.logout()
+        this.$emit('show-message', { text: '已退出登录', color: 'success' })
+        this.$router.push('/login')
+      } catch (error) {
+        this.$emit('show-message', { text: '退出失败', color: 'error' })
       }
     },
-    handleScroll() {
-      this.checkTransparency();
-    },
+
     handleSearch() {
       console.log('Searching for:', this.searchQuery)
       this.showSearch = false

@@ -1,11 +1,10 @@
 module.exports = {
   presets: [
-    ['@vue/app', {
-      useBuiltIns: 'entry',
-      polyfills: [
-        'es.promise',
-        'es.symbol'
-      ]
+    '@vue/babel-preset-app'
+  ],
+  plugins: [
+    ['@babel/plugin-transform-runtime', {
+      'regenerator': true
     }]
   ]
 } 

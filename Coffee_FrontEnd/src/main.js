@@ -10,6 +10,8 @@ Vue.config.productionTip = false
 
 // 配置axios
 axios.defaults.baseURL = process.env.VUE_APP_API_BASE_URL || 'http://localhost:8080'
+axios.defaults.headers.common['Content-Type'] = 'application/json'
+axios.defaults.headers.common['Accept'] = 'application/json'
 axios.interceptors.request.use(config => {
   // 可以在这里添加token等认证信息
   return config
