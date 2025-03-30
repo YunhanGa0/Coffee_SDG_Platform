@@ -22,6 +22,13 @@ public class ApiResponse {
                 .build();
     }
 
+    public static ApiResponse success() {
+        return ApiResponse.builder()
+                .code(200)
+                .message("Success")
+                .build();
+    }
+
     // Used to POST
     public static ApiResponse created(Object data) {
         return ApiResponse.builder()
