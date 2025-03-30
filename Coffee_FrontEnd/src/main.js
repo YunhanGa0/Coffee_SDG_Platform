@@ -9,19 +9,31 @@ import 'echarts/map/js/world.js'
 Vue.config.productionTip = false
 
 // 配置axios
-axios.defaults.baseURL = process.env.VUE_APP_API_BASE_URL || 'http://localhost:8080'
+axios.defaults.baseURL = process.env.VUE_APP_API_BASE_URL || 'http://uspa.zhangbh.com'
 axios.defaults.headers.common['Content-Type'] = 'application/json'
 axios.defaults.headers.common['Accept'] = 'application/json'
+
+// 添加请求拦截器
 axios.interceptors.request.use(config => {
-  // 可以在这里添加token等认证信息
+  const token = store.getters['auth/token']
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`
+  }
   return config
 })
+
+// 添加响应拦截器
 axios.interceptors.response.use(
   response => response,
   error => {
-    // 统一错误处理
+    if (error.response && error.response.status === 401) {
+      store.dispatch('auth/logout')
+      router.push('/login')
+    }
     return Promise.reject(error)
-})
+  }
+)
+
 Vue.prototype.$http = axios
 
 new Vue({
