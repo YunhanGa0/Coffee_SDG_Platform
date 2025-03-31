@@ -15,7 +15,13 @@ public class CorsConfig {
         CorsConfiguration config = new CorsConfiguration();
         
         // 允许跨域的源，这里设置为前端应用的地址
+        config.setAllowedOrigins(List.of(
+            "http://localhost:8081", // Vue默认端口
+            "http://uspa.zhangbh.com"
+        ));
+
         config.addAllowedOrigin("http://localhost:8081"); // Vue默认端口
+        config.addAllowedOrigin("http://");
         
         // 允许携带认证信息（cookies等）
         config.setAllowCredentials(true);
