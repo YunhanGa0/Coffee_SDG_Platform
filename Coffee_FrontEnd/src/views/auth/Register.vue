@@ -60,18 +60,6 @@
               注册
             </v-btn>
             <v-btn
-              color="info"
-              @click="testDirectFetch"
-            >
-              测试直接请求
-            </v-btn>
-            <v-btn
-              color="warning"
-              @click="testWithForm"
-            >
-              测试表单提交
-            </v-btn>
-            <v-btn
               text
               @click="$router.push('/login')"
             >
@@ -158,122 +146,21 @@ export default {
           password: this.formData.password
         }
         
-        fetch('http://localhost:8080/api/auth/register', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
-          },
-          body: JSON.stringify(userData)
-        })
-        .then(response => response.json())
-        .then(data => {
-          console.log('注册成功：', data)
-          this.showMessage('注册成功', 'success')
-          setTimeout(() => {
-            this.$router.push('/login')
-          }, 1500)
-        })
-        .catch(error => {
-          console.error('注册错误：', error)
-          this.showMessage(error.message || '注册失败，请重试', 'error')
-        })
-        .finally(() => {
-          this.loading = false
-        })
-      }
-    },
-
-    async testDirectFetch() {
-      try {
-        console.log('开始直接请求')
-        const userData = {
-          username: this.formData.username,
-          email: this.formData.email,
-          password: this.formData.password
-        };
-        console.log('请求数据:', userData);
-        
-        const response = await fetch('http://uspa.zhangbh.com/api/auth/register', {
-          method: 'POST',
-          mode: 'cors',
-          cache: 'no-cache',
-          credentials: 'same-origin',
-          headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
-          },
-          redirect: 'follow',
-          referrerPolicy: 'no-referrer',
-          body: JSON.stringify(userData)
-        });
-        
-        console.log('直接请求响应状态:', response.status);
-        console.log('直接请求响应头:', 
-          Array.from(response.headers.entries()).reduce((obj, [key, value]) => {
-            obj[key] = value;
-            return obj;
-          }, {})
-        );
-        
-        if (response.ok) {
-          const data = await response.json();
-          console.log('直接请求响应数据:', data);
-          this.showMessage('测试请求成功', 'success');
-        } else {
-          let errorText = response.statusText;
-          try {
-            const errorData = await response.json();
-            console.log('错误响应数据:', errorData);
-            errorText = errorData.message || errorText;
-          } catch (e) {
-            console.log('无法解析错误响应:', e);
-          }
-          this.showMessage('测试请求失败: ' + errorText, 'error');
-        }
-      } catch (error) {
-        console.error('测试请求错误:', error);
-        this.showMessage('测试请求错误: ' + error.message, 'error');
-      }
-    },
-
-    async testWithForm() {
-      try {
-        console.log('开始表单提交测试');
-        // 创建一个临时表单
-        const form = document.createElement('form');
-        form.method = 'POST';
-        form.action = 'http://uspa.zhangbh.com/api/auth/register';
-        form.target = '_blank'; // 在新窗口中打开结果
-        
-        // 添加表单字段
-        const fields = {
-          username: this.formData.username,
-          email: this.formData.email,
-          password: this.formData.password
-        };
-        
-        for (const key in fields) {
-          const input = document.createElement('input');
-          input.type = 'hidden';
-          input.name = key;
-          input.value = fields[key];
-          form.appendChild(input);
-        }
-        
-        // 添加到文档并提交
-        document.body.appendChild(form);
-        form.submit();
-        
-        // 清理表单
-        setTimeout(() => {
-          document.body.removeChild(form);
-        }, 100);
-        
-        this.showMessage('表单已提交，请查看新窗口', 'info');
-      } catch (error) {
-        console.error('表单提交错误:', error);
-        this.showMessage('表单提交错误: ' + error.message, 'error');
+        this.register(userData)
+          .then(data => {
+            console.log('注册成功：', data)
+            this.showMessage('注册成功', 'success')
+            setTimeout(() => {
+              this.$router.push('/login')
+            }, 1500)
+          })
+          .catch(error => {
+            console.error('注册错误：', error)
+            this.showMessage(error.message || '注册失败，请重试', 'error')
+          })
+          .finally(() => {
+            this.loading = false
+          })
       }
     },
 
