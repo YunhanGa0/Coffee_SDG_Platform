@@ -10,6 +10,7 @@ import Login from '../views/auth/Login.vue'
 import Register from '../views/auth/Register.vue'
 import ArticleEditor from '../views/ArticleEditor.vue'
 import ArticleList from '../views/ArticleList.vue'
+import ArticleDetail from '../views/ArticleDetail.vue'
 import store from '../store'
 
 Vue.use(VueRouter)
@@ -18,7 +19,7 @@ const routes = [
   {
     path: '/',
     name: 'Home',
-    component: () => import('@/views/Home.vue')
+    component: Home
   },
   {
     path: '/about',
@@ -48,13 +49,13 @@ const routes = [
   {
     path: '/login',
     name: 'Login',
-    component: () => import('@/views/auth/Login.vue'),
+    component: Login,
     meta: { guest: true }
   },
   {
     path: '/register',
     name: 'Register',
-    component: () => import('@/views/auth/Register.vue'),
+    component: Register,
     meta: { guest: true }
   },
   {
@@ -67,6 +68,11 @@ const routes = [
     path: '/articles',
     name: 'ArticleList',
     component: ArticleList
+  },
+  {
+    path: '/articles/:id',
+    name: 'ArticleDetail',
+    component: ArticleDetail
   }
 ]
 

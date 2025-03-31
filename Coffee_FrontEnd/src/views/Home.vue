@@ -103,10 +103,10 @@
           </v-col>
         </v-row>
         <v-row>
-          <v-col cols="12" md="4" v-for="(article, index) in articles" :key="index">
+          <v-col cols="12" md="4" v-for="(article, index) in articles" :key="article.id">
             <v-card class="feature-card mx-auto" height="100%" max-width="370">
               <v-img
-                :src="article.image"
+                :src="article.imageUrl"
                 height="220"
                 class="white--text"
                 gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.7)"
@@ -116,13 +116,15 @@
                 </v-card-title>
               </v-img>
               <v-card-text class="text-body-1 px-4 pt-4 pb-2">
-                {{ article.excerpt }}
+                {{ article.summary }}
               </v-card-text>
               <v-card-actions class="px-4 pb-4">
+                <v-spacer></v-spacer>
                 <v-btn
                   text
                   color="primary"
                   class="px-0"
+                  :to="'/articles/' + article.id"
                 >
                   阅读全文
                   <v-icon small class="ml-1">mdi-arrow-right</v-icon>
@@ -207,10 +209,50 @@
         </v-row>
       </v-container>
     </section>
+
+    <!-- 写文章按钮 -->
+    <v-btn
+      color="primary"
+      fab
+      fixed
+      bottom
+      right
+      class="mb-4 mr-4"
+      @click="$router.push('/article/editor')"
+    >
+      <v-tooltip top>
+        <template v-slot:activator="{ on, attrs }">
+          <v-icon v-bind="attrs" v-on="on">mdi-pencil</v-icon>
+        </template>
+        <span>写文章</span>
+      </v-tooltip>
+    </v-btn>
+
+    <!-- 提示信息 -->
+    <v-snackbar
+      v-model="snackbar.show"
+      :color="snackbar.color"
+      :timeout="3000"
+      top
+    >
+      {{ snackbar.text }}
+      <template v-slot:action="{ attrs }">
+        <v-btn
+          text
+          v-bind="attrs"
+          @click="snackbar.show = false"上
+        >
+          关闭
+        </v-btn>
+      </template>
+    </v-snackbar>
   </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+import axios from 'axios'
+
 export default {
   name: 'Home',
   data: () => ({
@@ -222,37 +264,45 @@ export default {
       { number: '99%', text: '道德采购咖啡' },
       { number: '30年', text: '可持续发展历史' }
     ],
-    articles: [
-      {
-        title: '星巴克投资1亿美元支持咖啡农户应对气候变化',
-        date: '2023年10月15日',
-        image: 'https://content-prod-live.cert.starbucks.com/binary/v2/asset/137-73019.jpg',
-        excerpt: '这项全球倡议将帮助小型咖啡种植者适应气候变化带来的挑战，确保咖啡种植业的可持续未来。'
-      },
-      {
-        title: '星巴克中国减塑计划取得重大进展',
-        date: '2023年9月20日',
-        image: 'https://content-prod-live.cert.starbucks.com/binary/v2/asset/137-72395.jpg',
-        excerpt: '在中国市场，星巴克已成功减少40%的一次性塑料使用，并推出了创新的可重复使用杯具计划。'
-      },
-      {
-        title: '探访哥伦比亚高原咖啡种植社区',
-        date: '2023年8月5日',
-        image: 'https://content-prod-live.cert.starbucks.com/binary/v2/asset/137-70387.jpg',
-        excerpt: '深入哥伦比亚高原，了解星巴克如何与当地咖啡种植者合作，实现经济与环境的双重可持续发展。'
-      }
-    ]
+    articles: [],
+    snackbar: {
+      show: false,
+      text: '',
+      color: 'success'
+    }
   }),
+  computed: {
+    ...mapGetters('auth', ['isAuthenticated', 'currentUser']),
+    isAdmin() {
+      return this.currentUser && this.currentUser.role === 'ADMIN'
+    }
+  },
   mounted() {
     window.addEventListener('scroll', this.handleScroll);
     // 初始化时设置导航栏为透明
     this.$root.$emit('update-nav-transparency', true);
     this.handleScroll();
+    // 获取文章列表
+    this.fetchArticles();
   },
   beforeDestroy() {
     window.removeEventListener('scroll', this.handleScroll);
   },
   methods: {
+    async fetchArticles() {
+      try {
+        const response = await axios.get('/api/articles');
+        if (response.data.code === 200) {
+          // 获取所有文章并只显示最新的3篇
+          this.articles = response.data.data.slice(0, 3);
+        } else {
+          this.showMessage('获取文章失败: ' + response.data.message, 'error');
+        }
+      } catch (error) {
+        console.error('获取文章错误:', error);
+        this.showMessage('获取文章失败', 'error');
+      }
+    },
     handleScroll() {
       const scrollPosition = window.scrollY;
       this.isScrolled = scrollPosition > 50;
@@ -263,6 +313,13 @@ export default {
       const contentSection = document.querySelector('.stats-section');
       if (contentSection) {
         contentSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    },
+    showMessage(text, color = 'success') {
+      this.snackbar = {
+        show: true,
+        text,
+        color
       }
     }
   }
