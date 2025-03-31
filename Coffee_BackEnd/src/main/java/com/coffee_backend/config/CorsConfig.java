@@ -19,9 +19,6 @@ public class CorsConfig {
             "http://localhost:8081", // Vue默认端口
             "http://uspa.zhangbh.com"
         ));
-
-        config.addAllowedOrigin("http://localhost:8081"); // Vue默认端口
-        config.addAllowedOrigin("http://");
         
         // 允许携带认证信息（cookies等）
         config.setAllowCredentials(true);
