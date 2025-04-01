@@ -4,7 +4,7 @@
       <v-row no-gutters>
         <v-col cols="12">
           <v-parallax
-            src="https://www.starbucks.com.cn/assets/images/social-responsibility/planet-01.jpg"
+            :src="require('@/assets/pic/plantation.jpg')"
             height="500"
             dark
           >
