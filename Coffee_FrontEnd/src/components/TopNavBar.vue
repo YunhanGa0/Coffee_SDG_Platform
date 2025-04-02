@@ -248,69 +248,81 @@ export default {
 <style scoped>
 .navbar {
   background: white !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
 }
 
 .logo-container {
-  margin-right: 32px;
-  padding: 0 16px;
+  transition: transform 0.3s ease;
+}
+
+.logo-container:hover {
+  transform: scale(1.05);
 }
 
 .logo-link {
-  text-decoration: none;
   display: flex;
   align-items: center;
+  text-decoration: none;
 }
 
 .tab-item {
-  font-size: 14px !important;
-  font-weight: 600 !important;
   letter-spacing: 0.5px;
-  text-transform: none !important;
-  min-width: auto !important;
-  padding: 0 24px !important;
-  height: 64px !important;
-  opacity: 1 !important;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  position: relative;
+  margin: 0 6px;
+}
+
+.tab-item:before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 3px;
+  background-color: #00704A;
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+  opacity: 0;
+}
+
+.tab-item.v-tab--active:before {
+  width: 30px;
+  opacity: 1;
 }
 
 .action-btn {
-  font-size: 14px !important;
-  font-weight: 600 !important;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  font-weight: 500;
   letter-spacing: 0.5px;
-  text-transform: none !important;
-  height: 36px !important;
-  padding: 0 16px !important;
+}
+
+.action-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 112, 74, 0.2);
 }
 
 .mobile-menu {
-  z-index: 1000;
+  background-color: #fafafa;
 }
 
-.v-list-item--active {
-  background-color: rgba(0, 112, 74, 0.1) !important;
+/* 动画效果 */
+.v-enter-active, .v-leave-active {
+  transition: opacity 0.5s;
+}
+.v-enter, .v-leave-to {
+  opacity: 0;
 }
 
-.v-list-item--active .v-list-item__title {
-  color: #00704A !important;
-}
-
-/* 覆盖Vuetify默认样式 */
-.v-tab--active {
-  color: inherit !important;
-}
-
-.v-tabs-slider {
-  background-color: currentColor !important;
-}
-
-.v-btn--text {
-  font-weight: 600 !important;
-}
-
-.v-btn--contained {
-  box-shadow: none !important;
-}
-
-.v-tabs {
-  height: 64px !important;
+/* 添加自定义主色调变量 */
+:root {
+  --primary-color: #00704A;
+  --secondary-color: #27251F;
+  --light-color: #f5f5f5;
+  --accent-color: #C4A484;
 }
 </style> 

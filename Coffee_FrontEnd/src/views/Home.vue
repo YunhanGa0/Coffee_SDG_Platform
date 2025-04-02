@@ -345,243 +345,319 @@ export default {
 .hero-fullscreen {
   position: relative;
   height: 100vh;
-  width: 100%;
+  overflow: hidden;
 }
 
 .hero-image {
-  position: absolute !important;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  height: 100vh !important;
+  position: relative;
 }
 
 .hero-content {
-  position: relative;
-  z-index: 2;
-  padding-top: 120px;
-}
-
-.main-title {
-  font-size: 5rem;
-  font-weight: 800;
-  line-height: 1.4;
-  color: white;
-  letter-spacing: 2px;
-}
-
-.highlight-text {
-  color: #1ED760;
-  font-weight: 900;
-}
-
-.main-subtitle {
-  font-size: 1.8rem;
-  font-weight: 400;
-  color: rgba(255, 255, 255, 0.9);
-  letter-spacing: 1px;
+  animation: fadeIn 1.5s ease-in-out;
   max-width: 800px;
   margin: 0 auto;
 }
 
-.scroll-hint {
-  position: absolute;
-  bottom: 80px;
-  left: 50%;
-  transform: translateX(-50%);
-  text-align: center;
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.main-title {
+  font-size: 3.5rem;
+  font-weight: 800;
+  line-height: 1.2;
   color: white;
-  animation: fadeInOut 2s infinite;
-  width: 100%;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  margin-bottom: 1.5rem;
 }
 
-.scroll-text {
+.highlight-text {
+  color: #00d676;
+  position: relative;
   display: inline-block;
-  font-size: 12px;
-  letter-spacing: 2px;
-  margin-bottom: 8px;
-  font-weight: 500;
 }
 
-.scroll-arrow {
-  display: block;
-  font-size: 24px !important;
-  animation: bounce 2s infinite;
-  margin: 0 auto;
+.highlight-text:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 8px;
+  background-color: rgba(0, 214, 118, 0.3);
+  z-index: -1;
 }
 
-@keyframes fadeInOut {
-  0%, 100% { opacity: 0.5; }
-  50% { opacity: 1; }
-}
-
-@keyframes bounce {
-  0%, 20%, 50%, 80%, 100% {
-    transform: translateY(0);
-  }
-  40% {
-    transform: translateY(-10px);
-  }
-  60% {
-    transform: translateY(-5px);
-  }
+.main-subtitle {
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  max-width: 600px;
+  margin: 0 auto 2rem;
+  line-height: 1.5;
 }
 
 .explore-btn {
   font-size: 1.1rem !important;
-  letter-spacing: 1px;
-  text-transform: none !important;
-  transition: all 0.3s ease !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.5px !important;
+  padding: 0 2rem !important;
+  height: 54px !important;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25) !important;
 }
 
 .explore-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2) !important;
+  transform: translateY(-3px);
+  box-shadow: 0 7px 30px rgba(0, 0, 0, 0.4) !important;
 }
 
-.video-btn {
-  backdrop-filter: blur(5px);
-  background: rgba(255, 255, 255, 0.15);
-  transition: all 0.3s ease;
-}
-
-.video-btn:hover {
-  background: rgba(255, 255, 255, 0.25);
-}
-
-.video-container {
-  position: relative;
-  padding-bottom: 56.25%;
-  height: 0;
-  overflow: hidden;
-}
-
-.video-container iframe {
+.scroll-hint {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0) translateX(-50%); }
+  40% { transform: translateY(-20px) translateX(-50%); }
+  60% { transform: translateY(-10px) translateX(-50%); }
+}
+
+.scroll-text {
+  color: white;
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+  opacity: 0.8;
+}
+
+.scroll-arrow {
+  animation: arrowBounce 2s infinite;
+}
+
+@keyframes arrowBounce {
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-10px); }
+  60% { transform: translateY(-5px); }
 }
 
 /* 数据统计区域 */
 .stats-section {
-  background-color: #f7f7f7;
+  background-color: #fafafa;
+  position: relative;
+}
+
+.stats-section:before {
+  content: '';
+  position: absolute;
+  top: -80px;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background: linear-gradient(to top, rgba(250,250,250,1) 0%, rgba(250,250,250,0) 100%);
+  z-index: 5;
 }
 
 .stat-card {
   transition: all 0.3s ease;
+  padding: 2rem !important;
+  border-radius: 12px;
+  position: relative;
+  overflow: hidden;
 }
 
 .stat-card:hover {
   transform: translateY(-5px);
+  background-color: rgba(0, 112, 74, 0.05);
+}
+
+.stat-card:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 0;
+  background-color: var(--primary-color);
+  transition: height 0.3s ease;
+}
+
+.stat-card:hover:before {
+  height: 100%;
 }
 
 .stat-number {
-  font-size: 3.5rem;
+  font-size: 3rem;
   font-weight: 800;
-  color: #00704A;
+  color: var(--primary-color);
+  margin-bottom: 0.5rem;
 }
 
 .stat-text {
-  font-size: 1.1rem;
-  color: #555;
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--text-color);
 }
 
 /* 特色区域 */
 .green-bg {
-  background: linear-gradient(135deg, #006241 0%, #00895f 100%);
+  background: linear-gradient(135deg, #054733 0%, #00513a 100%);
+  position: relative;
+}
+
+.green-bg:before, .green-bg:after {
+  content: '';
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 50%;
+}
+
+.green-bg:before {
+  top: -100px;
+  left: -100px;
+}
+
+.green-bg:after {
+  bottom: -100px;
+  right: -100px;
+}
+
+.section-title:after {
+  content: "";
+  position: absolute;
+  bottom: -16px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 4px;
+  background-color: currentColor;
 }
 
 .features-subtitle {
-  font-size: 1.25rem;
-  max-width: 700px;
-  margin: 0 auto;
+  font-size: 1.2rem;
+  opacity: 0.9;
+  margin-top: 2rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .feature-card {
-  transition: all 0.4s ease;
-  overflow: hidden;
   border-radius: 12px;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1) !important;
+  overflow: hidden;
 }
 
 .feature-card:hover {
   transform: translateY(-10px);
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1) !important;
-}
-
-.feature-card .v-image {
-  transition: all 0.4s ease;
-}
-
-.feature-card:hover .v-image {
-  transform: scale(1.05);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2) !important;
 }
 
 /* 地图视差区域 */
+.map-parallax {
+  position: relative;
+}
+
 .map-overlay {
   position: absolute;
   top: 0;
+  right: 0;
+  bottom: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3));
+  background: radial-gradient(circle, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.7) 100%);
   z-index: 1;
 }
 
 .explore-map-btn {
-  position: relative;
-  z-index: 2;
-  transition: all 0.3s ease;
   border-width: 2px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.5px !important;
+  transition: all 0.3s ease !important;
 }
 
 .explore-map-btn:hover {
-  transform: translateY(-5px);
   background-color: rgba(255, 255, 255, 0.1) !important;
+  transform: translateY(-3px);
+  box-shadow: 0 7px 20px rgba(0, 0, 0, 0.3) !important;
 }
 
 /* 注册区域 */
 .cream-bg {
-  background-color: #f7f2e8;
+  background-color: #f8f5f0;
+  position: relative;
+  overflow: hidden;
+}
+
+.cream-bg:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(196, 164, 132, 0.2) 0%, rgba(196, 164, 132, 0) 70%);
+  z-index: 0;
 }
 
 .signup-card {
-  border-radius: 16px;
-  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05) !important;
   transition: all 0.3s ease;
+  position: relative;
+  z-index: 1;
 }
 
 .signup-card:hover {
-  box-shadow: 0 16px 30px rgba(0, 0, 0, 0.12) !important;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1) !important;
 }
 
 /* 响应式调整 */
 @media (max-width: 960px) {
   .main-title {
-    font-size: 2.5rem;
+    font-size: 2.8rem;
   }
-
+  
   .main-subtitle {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
   }
-
+  
   .section-title {
     font-size: 2rem;
-  }
-
-  .stat-number {
-    font-size: 2.5rem;
   }
 }
 
 @media (max-width: 600px) {
   .main-title {
-    font-size: 2rem;
+    font-size: 2.2rem;
   }
-
+  
+  .main-subtitle {
+    font-size: 1.1rem;
+  }
+  
   .stat-number {
-    font-size: 2rem;
+    font-size: 2.5rem;
+  }
+  
+  .stat-text {
+    font-size: 1rem;
+  }
+  
+  .section-title {
+    font-size: 1.8rem;
   }
 }
 </style>

@@ -328,4 +328,4 @@ export default {
 .v-chip {
   font-weight: 500;
 }
-</style> 
+</style>
