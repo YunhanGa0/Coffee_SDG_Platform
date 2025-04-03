@@ -42,6 +42,10 @@ public class AuthService {
             return ApiResponse.error(400, "Email should not be null");
         }
 
+        if (password == null || password.trim().isEmpty()) {
+            return ApiResponse.error(400, "Password should not be null");
+        }
+
         if (!EMAIL_PATTERN.matcher(email).matches()) {
             return ApiResponse.error(400, "Email format is null");
         }
