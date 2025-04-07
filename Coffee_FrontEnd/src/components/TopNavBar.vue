@@ -99,6 +99,12 @@
               </v-list-item-icon>
               <v-list-item-title>个人信息</v-list-item-title>
             </v-list-item>
+            <v-list-item v-if="isAdmin" to="/admin">
+              <v-list-item-icon>
+                <v-icon>mdi-shield-account</v-icon>
+              </v-list-item-icon>
+              <v-list-item-title>管理后台</v-list-item-title>
+            </v-list-item>
             <v-list-item v-if="isAdmin" to="/article/editor">
               <v-list-item-icon>
                 <v-icon>mdi-pencil</v-icon>
@@ -179,6 +185,12 @@
               <v-icon>mdi-account-edit</v-icon>
             </v-list-item-icon>
             <v-list-item-title>个人信息</v-list-item-title>
+          </v-list-item>
+          <v-list-item v-if="isAdmin" to="/admin">
+            <v-list-item-icon>
+              <v-icon>mdi-shield-account</v-icon>
+            </v-list-item-icon>
+            <v-list-item-title>管理后台</v-list-item-title>
           </v-list-item>
           <v-list-item v-if="isAdmin" to="/article/editor">
             <v-list-item-icon>

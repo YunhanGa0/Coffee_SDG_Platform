@@ -10,10 +10,10 @@
         <v-container class="fill-height">
           <v-row align="center" justify="center">
             <v-col cols="12" class="text-center">
-              <h1 class="text-h2 font-weight-bold white--text mb-4 animated-title">关于我们</h1>
+              <h1 class="text-h2 font-weight-bold white--text mb-4 animated-title">About Us</h1>
               <div class="subtitle-line"></div>
               <p class="text-h6 white--text mt-6 mb-0 subtitle-text">
-                连接咖啡与人，共创可持续未来
+                Connecting Coffee and People, Creating a Sustainable Future
               </p>
             </v-col>
           </v-row>
@@ -26,10 +26,10 @@
       <v-container>
         <v-row justify="center">
           <v-col cols="12" md="8" class="text-center">
-            <h2 class="section-title text-center mb-8">我们的使命</h2>
+            <h2 class="section-title text-center mb-8">Our Mission</h2>
             <p class="mission-text mb-8">
-              我们致力于建立一个连接咖啡种植者和消费者的平台，确保每一杯咖啡不仅仅是一种饮品，
-              更是一种能够改变生活、保护环境、促进社区发展的力量。
+              We are committed to building a platform that connects coffee growers and consumers, ensuring that every cup of coffee is not just a beverage,
+              but a force that can change lives, protect the environment, and promote community development.
             </p>
             <div class="value-chips d-flex flex-wrap justify-center">
               <v-chip 
@@ -39,7 +39,7 @@
                 large
               >
                 <v-icon left>mdi-handshake</v-icon>
-                公平贸易
+                Fair Trade
               </v-chip>
               <v-chip 
                 class="ma-2 value-chip" 
@@ -48,7 +48,7 @@
                 large
               >
                 <v-icon left>mdi-leaf</v-icon>
-                环境可持续
+                Environmental Sustainability
               </v-chip>
               <v-chip 
                 class="ma-2 value-chip" 
@@ -57,7 +57,7 @@
                 large
               >
                 <v-icon left>mdi-home-group</v-icon>
-                社区支持
+                Community Support
               </v-chip>
               <v-chip 
                 class="ma-2 value-chip" 
@@ -66,7 +66,7 @@
                 large
               >
                 <v-icon left>mdi-cup</v-icon>
-                品质保证
+                Quality Assurance
               </v-chip>
             </div>
           </v-col>
@@ -89,16 +89,16 @@
                     height="80"
                     class="mb-6"
                   ></v-img>
-                  <h2 class="text-h4 font-weight-bold mb-6 primary--text">星巴克可持续发展合作</h2>
+                  <h2 class="text-h4 font-weight-bold mb-6 primary--text">Starbucks Sustainability Partnership</h2>
                   <p class="text-body-1 mb-4">
-                    星巴克致力于以负责任的方式种植和采购高品质的咖啡，同时改善咖啡种植者和他们的社区的生活。
+                    Starbucks is committed to growing and purchasing high-quality coffee in a responsible way while improving the lives of coffee farmers and their communities.
                   </p>
                   <p class="text-body-1 mb-4">
-                    我们与星巴克合作，共同推进咖啡产业的可持续发展。通过与咖啡农民、客户和环保组织的协作，
-                    我们力求在保护环境的同时，支持咖啡农民和他们的社区。
+                    We partner with Starbucks to advance sustainable development in the coffee industry. Through collaboration with coffee farmers, customers, and environmental organizations,
+                    we strive to support coffee farmers and their communities while protecting the environment.
                   </p>
                   <p class="text-body-1 mb-6">
-                    多年来，我们已经建立了全面的可持续性方法，包括道德采购实践、环境保护措施和社区投资项目。
+                    Over the years, we have established a comprehensive approach to sustainability, including ethical sourcing practices, environmental protection measures, and community investment projects.
                   </p>
                   <v-btn
                     outlined
@@ -107,7 +107,7 @@
                     href="https://about.starbucks.com/sustainability/"
                     target="_blank"
                   >
-                    了解更多
+                    Learn More
                     <v-icon right>mdi-arrow-right</v-icon>
                   </v-btn>
                 </div>
@@ -124,13 +124,13 @@
                 >
                   <div class="image-overlay d-flex flex-column justify-end pa-6">
                     <div class="fact-chip mb-2">
-                      <span class="font-weight-bold">99%</span> 道德采购咖啡
+                      <span class="font-weight-bold">99%</span> Ethically Sourced Coffee
                     </div>
                     <div class="fact-chip mb-2">
-                      <span class="font-weight-bold">400,000+</span> 合作咖啡农户
+                      <span class="font-weight-bold">400,000+</span> Partner Coffee Farmers
                     </div>
                     <div class="fact-chip">
-                      <span class="font-weight-bold">30年</span> 可持续发展历史
+                      <span class="font-weight-bold">30 Years</span> of Sustainable Development
                     </div>
                   </div>
                 </v-img>
@@ -155,13 +155,13 @@
                 >
                   <div class="image-overlay d-flex flex-column justify-end pa-6">
                     <div class="fact-chip mb-2">
-                      <span class="font-weight-bold">Origin</span> 农产品原产地
+                      <span class="font-weight-bold">Origin</span> Agricultural Origin
                     </div>
                     <div class="fact-chip mb-2">
-                      <span class="font-weight-bold">Boost</span> 提升和推动
+                      <span class="font-weight-bold">Boost</span> Enhancement and Promotion
                     </div>
                     <div class="fact-chip">
-                      <span class="font-weight-bold">OB</span> 为原产地创造福利
+                      <span class="font-weight-bold">OB</span> Creating Benefits for Origin
                     </div>
                   </div>
                 </v-img>
@@ -176,25 +176,25 @@
                     <span class="text-h3 font-weight-black">OB</span>
                     <span class="text-subtitle-1 ml-2">OriginBoost</span>
                   </div>
-                  <h2 class="text-h4 font-weight-bold mb-6 secondary--text">OriginBoost 平台</h2>
+                  <h2 class="text-h4 font-weight-bold mb-6 secondary--text">OriginBoost Platform</h2>
                   <p class="text-body-1 mb-4">
-                    <span class="font-weight-bold">Origin</span> 代表农产品原产地，强调农民和农庄的核心地位。
-                    <span class="font-weight-bold">Boost</span> 代表提升和推动，体现为原产地创造福利和提升待遇的目标。
+                    <span class="font-weight-bold">Origin</span> represents agricultural origin, emphasizing the core position of farmers and farms.
+                    <span class="font-weight-bold">Boost</span> represents enhancement and promotion, reflecting the goal of creating benefits and improving treatment for origin.
                   </p>
                   <p class="text-body-1 mb-4">
-                    我们的使命是为原产地创造福利(Origin Benefits)，通过直接连接消费者与咖啡种植者，
-                    消除中间环节，确保咖啡农民获得公平的报酬，同时提供高品质的咖啡产品。
+                    Our mission is to create benefits for origin (Origin Benefits), by directly connecting consumers with coffee growers,
+                    eliminating intermediaries, ensuring coffee farmers receive fair compensation, while providing high-quality coffee products.
                   </p>
                   <p class="text-body-1 mb-6">
-                    OB平台提供全面的溯源系统，让消费者了解他们购买的每一杯咖啡背后的故事、种植方式和对当地社区的影响。
-                    我们相信透明度是建立消费者信任和推动可持续发展的关键。
+                    The OB platform provides a comprehensive traceability system, allowing consumers to understand the story behind every cup of coffee they purchase, the cultivation methods, and the impact on local communities.
+                    We believe transparency is key to building consumer trust and promoting sustainable development.
                   </p>
                   <v-btn
                     outlined
                     color="secondary"
                     class="learn-more-btn"
                   >
-                    联系我们
+                    Contact Us
                     <v-icon right>mdi-arrow-right</v-icon>
                   </v-btn>
                 </div>
@@ -210,9 +210,9 @@
       <v-container>
         <v-row justify="center">
           <v-col cols="12" class="text-center mb-10">
-            <h2 class="section-title text-center">我们的团队</h2>
+            <h2 class="section-title text-center">Our Team</h2>
             <p class="section-subtitle">
-              来自不同领域的专业人士，共同为可持续咖啡产业而努力
+              Professionals from different fields working together for sustainable coffee industry
             </p>
           </v-col>
         </v-row>
@@ -258,12 +258,12 @@
         <v-row justify="center">
           <v-col cols="12" md="8">
             <v-card class="contact-card pa-6">
-              <h2 class="text-h4 font-weight-bold mb-6 text-center">联系我们</h2>
+              <h2 class="text-h4 font-weight-bold mb-6 text-center">Contact Us</h2>
               <v-form>
                 <v-row>
                   <v-col cols="12" sm="6">
                     <v-text-field
-                      label="您的姓名"
+                      label="Your Name"
                       outlined
                       dense
                       hide-details="auto"
@@ -272,7 +272,7 @@
                   </v-col>
                   <v-col cols="12" sm="6">
                     <v-text-field
-                      label="电子邮箱"
+                      label="Email"
                       outlined
                       dense
                       hide-details="auto"
@@ -281,7 +281,7 @@
                   </v-col>
                   <v-col cols="12">
                     <v-text-field
-                      label="主题"
+                      label="Subject"
                       outlined
                       dense
                       hide-details="auto"
@@ -290,7 +290,7 @@
                   </v-col>
                   <v-col cols="12">
                     <v-textarea
-                      label="消息内容"
+                      label="Message"
                       outlined
                       hide-details="auto"
                       rows="5"
@@ -303,7 +303,7 @@
                       large
                       class="px-8"
                     >
-                      发送消息
+                      Send Message
                     </v-btn>
                   </v-col>
                 </v-row>
@@ -322,21 +322,21 @@ export default {
   data: () => ({
     teamMembers: [
       {
-        name: '张明',
-        role: '创始人兼首席执行官',
-        description: '拥有15年咖啡产业经验，致力于推动可持续咖啡种植和公平贸易。',
+        name: 'Zhang Ming',
+        role: 'Founder and CEO',
+        description: 'With 15 years of experience in the coffee industry, dedicated to promoting sustainable coffee cultivation and fair trade.',
         photo: 'https://randomuser.me/api/portraits/men/32.jpg'
       },
       {
-        name: '李月',
-        role: '首席运营官',
-        description: '专注于农业供应链管理，在连接农民与市场方面有丰富经验。',
+        name: 'Li Yue',
+        role: 'Chief Operating Officer',
+        description: 'Focused on agricultural supply chain management, with extensive experience in connecting farmers with markets.',
         photo: 'https://randomuser.me/api/portraits/women/44.jpg'
       },
       {
-        name: '王伟',
-        role: '可持续发展总监',
-        description: '环境科学博士，负责设计和实施我们的可持续发展战略和项目。',
+        name: 'Wang Wei',
+        role: 'Director of Sustainable Development',
+        description: 'PhD in Environmental Science, responsible for designing and implementing our sustainable development strategies and projects.',
         photo: 'https://randomuser.me/api/portraits/men/62.jpg'
       }
     ]

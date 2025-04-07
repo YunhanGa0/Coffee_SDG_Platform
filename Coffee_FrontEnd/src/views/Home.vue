@@ -1,6 +1,6 @@
 <template>
   <div class="home-container" @scroll="handleScroll" ref="homeContainer">
-    <!-- 全屏首页区域 -->
+    <!-- Hero Section -->
     <section class="hero-fullscreen">
       <v-img
         :src="require('../assets/pic/Homepic.jpg')"
@@ -13,10 +13,11 @@
             <v-col cols="12" class="text-center">
               <div class="hero-content">
                 <h1 class="main-title mb-6">
-                  从<span class="highlight-text">一粒咖啡豆</span><br>到全球咖啡责任
+                  Sustainable Coffee Development
+                  <span class="highlight-text">Global Initiative</span>
                 </h1>
                 <p class="main-subtitle mb-12">
-                  可持续发展的咖啡庄园，改变农民生活，分享咖啡文化
+                  Connecting coffee growers and consumers through sustainable development
                 </p>
                 <v-btn
                   x-large
@@ -26,7 +27,7 @@
                   class="explore-btn px-8"
                   :to="{ path: '/plantation' }"
                 >
-                  探索庄园
+                  Learn More
                   <v-icon right>mdi-arrow-right</v-icon>
                 </v-btn>
               </div>
@@ -66,45 +67,44 @@
       </v-card>
     </v-dialog>
 
-    <!-- 动态数据展示区域 -->
+    <!-- Statistics Section -->
     <section class="stats-section py-12">
       <v-container>
         <v-row justify="center">
-          <v-col cols="12" class="text-center mb-8">
-            <h2 class="section-title">我们的全球影响力</h2>
-            <v-divider class="mx-auto my-6 primary" style="width: 80px; height: 4px;"></v-divider>
+          <v-col cols="12" md="10" lg="8" class="text-center">
+            <h2 class="section-title primary--text">Our Global Impact</h2>
+            <v-divider class="mx-auto my-6" style="width: 80px; height: 4px;"></v-divider>
+            <p class="text-h6 mb-12">
+              Starbucks is committed to sustainable coffee development
+            </p>
           </v-col>
         </v-row>
         <v-row justify="center">
           <v-col cols="6" md="3" v-for="(stat, index) in stats" :key="index">
-            <v-card
-              elevation="0"
-              class="pa-4 text-center stat-card"
-              color="transparent"
-            >
-              <div class="stat-number mb-2">{{ stat.number }}</div>
-              <div class="stat-text">{{ stat.text }}</div>
-            </v-card>
+            <div class="stat-item text-center">
+              <div class="stat-number primary--text">{{ stat.number }}</div>
+              <div class="stat-label">{{ stat.text }}</div>
+            </div>
           </v-col>
         </v-row>
       </v-container>
     </section>
 
-    <!-- 产品特色展示 -->
+    <!-- Features Section -->
     <section class="features-section py-12 green-bg">
       <v-container>
         <v-row justify="center">
           <v-col cols="12" class="text-center mb-8">
-            <h2 class="section-title white--text">我们的咖啡责任</h2>
+            <h2 class="section-title white--text">Our Coffee Responsibility</h2>
             <v-divider class="mx-auto my-6 white" style="width: 80px; height: 4px;"></v-divider>
             <p class="features-subtitle white--text">
-              星巴克的每一杯咖啡背后，都有一个可持续发展的故事
+              Behind every cup of Starbucks coffee lies a story of sustainable development
             </p>
           </v-col>
         </v-row>
         <v-row>
           <v-col cols="12" md="4" v-for="(article, index) in articles" :key="article.id">
-            <v-card class="feature-card mx-auto" height="100%" max-width="370">
+            <v-card class="feature-card mx-auto mb-6" max-width="370">
               <v-img
                 :src="article.imageUrl"
                 height="220"
@@ -126,7 +126,7 @@
                   class="px-0"
                   :to="'/articles/' + article.id"
                 >
-                  阅读全文
+                  Read More
                   <v-icon small class="ml-1">mdi-arrow-right</v-icon>
                 </v-btn>
               </v-card-actions>
@@ -167,33 +167,33 @@
       </v-parallax>
     </section>
 
-    <!-- 注册会员区域 -->
+    <!-- Signup Section -->
     <section class="signup-section py-12 cream-bg">
       <v-container>
         <v-row justify="center" align="center">
           <v-col cols="12" md="6" class="text-center text-md-left">
             <h2 class="text-h3 font-weight-bold mb-4 primary--text">
-              加入Starbucks可持续咖啡会员
+              Join Starbucks Sustainable Coffee Membership
             </h2>
             <p class="text-h6 mb-8">
-              成为会员，获取独家咖啡文化资讯，参与可持续发展项目
+              Become a member to receive exclusive coffee culture information and participate in sustainable development projects
             </p>
           </v-col>
           <v-col cols="12" md="6">
             <v-card class="pa-6 signup-card" elevation="10">
               <v-form>
                 <v-text-field
-                  label="您的姓名"
+                  label="Your Name"
                   outlined
                   dense
                 ></v-text-field>
                 <v-text-field
-                  label="电子邮箱"
+                  label="Email"
                   outlined
                   dense
                 ></v-text-field>
                 <v-checkbox
-                  label="我同意接收星巴克的最新资讯与优惠"
+                  label="I agree to receive Starbucks latest news and offers"
                 ></v-checkbox>
                 <v-btn
                   block
@@ -201,7 +201,7 @@
                   large
                   class="white--text"
                 >
-                  立即注册
+                  Register Now
                 </v-btn>
               </v-form>
             </v-card>
@@ -210,7 +210,7 @@
       </v-container>
     </section>
 
-    <!-- 写文章按钮 -->
+    <!-- Write Article Button -->
     <v-btn
       color="primary"
       fab
@@ -224,11 +224,11 @@
         <template v-slot:activator="{ on, attrs }">
           <v-icon v-bind="attrs" v-on="on">mdi-pencil</v-icon>
         </template>
-        <span>写文章</span>
+        <span>Write Article</span>
       </v-tooltip>
     </v-btn>
 
-    <!-- 提示信息 -->
+    <!-- Snackbar -->
     <v-snackbar
       v-model="snackbar.show"
       :color="snackbar.color"
@@ -240,9 +240,9 @@
         <v-btn
           text
           v-bind="attrs"
-          @click="snackbar.show = false"上
+          @click="snackbar.show = false"
         >
-          关闭
+          Close
         </v-btn>
       </template>
     </v-snackbar>
@@ -259,10 +259,10 @@ export default {
     showVideo: false,
     isScrolled: false,
     stats: [
-      { number: '75+', text: '源产地国家' },
-      { number: '400,000+', text: '咖啡农户合作' },
-      { number: '99%', text: '道德采购咖啡' },
-      { number: '30年', text: '可持续发展历史' }
+      { number: '75+', text: 'Origin Countries' },
+      { number: '400,000+', text: 'Coffee Farmers' },
+      { number: '99%', text: 'Ethically Sourced Coffee' },
+      { number: '30 Years', text: 'Sustainable Development History' }
     ],
     articles: [],
     snackbar: {
@@ -288,13 +288,26 @@ export default {
   beforeDestroy() {
     window.removeEventListener('scroll', this.handleScroll);
   },
+  // 添加路由监听
+  watch: {
+    '$route'(to, from) {
+      // 当路由变化时，如果是回到主页，就重新获取文章
+      if (to.path === '/') {
+        this.fetchArticles();
+      }
+    }
+  },
   methods: {
     async fetchArticles() {
       try {
         const response = await axios.get('/api/articles');
         if (response.data.code === 200) {
-          // 获取所有文章并只显示最新的3篇
-          this.articles = response.data.data.slice(0, 3);
+          // 获取所有文章并按创建时间排序
+          this.articles = response.data.data.sort((a, b) => {
+            const dateA = new Date(a.createTime || a.createDate);
+            const dateB = new Date(b.createTime || b.createDate);
+            return dateB - dateA;
+          });
         } else {
           this.showMessage('获取文章失败: ' + response.data.message, 'error');
         }
@@ -468,7 +481,7 @@ export default {
   z-index: 5;
 }
 
-.stat-card {
+.stat-item {
   transition: all 0.3s ease;
   padding: 2rem !important;
   border-radius: 12px;
@@ -476,12 +489,12 @@ export default {
   overflow: hidden;
 }
 
-.stat-card:hover {
+.stat-item:hover {
   transform: translateY(-5px);
   background-color: rgba(0, 112, 74, 0.05);
 }
 
-.stat-card:before {
+.stat-item:before {
   content: '';
   position: absolute;
   top: 0;
@@ -492,7 +505,7 @@ export default {
   transition: height 0.3s ease;
 }
 
-.stat-card:hover:before {
+.stat-item:hover:before {
   height: 100%;
 }
 
@@ -503,7 +516,7 @@ export default {
   margin-bottom: 0.5rem;
 }
 
-.stat-text {
+.stat-label {
   font-size: 1.2rem;
   font-weight: 500;
   color: var(--text-color);
@@ -652,7 +665,7 @@ export default {
     font-size: 2.5rem;
   }
   
-  .stat-text {
+  .stat-label {
     font-size: 1rem;
   }
   

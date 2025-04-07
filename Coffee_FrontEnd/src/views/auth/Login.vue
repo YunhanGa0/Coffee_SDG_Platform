@@ -32,18 +32,32 @@
             <v-spacer></v-spacer>
             <v-btn
               color="primary"
+              block
               :loading="loading"
-              :disabled="!valid"
-              @click="handleLogin"
+              type="submit"
+              class="mt-4"
             >
               登录
             </v-btn>
-            <v-btn
-              text
-              @click="$router.push('/register')"
-            >
-              注册账号
-            </v-btn>
+            <div class="text-center mt-4">
+              <router-link to="/register" class="text-decoration-none">
+                没有账号？点此注册
+              </router-link>
+            </div>
+            
+            <v-divider class="my-4"></v-divider>
+            
+            <div class="text-center">
+              <v-btn 
+                text 
+                color="grey" 
+                @click="getAdminAccount" 
+                :loading="adminLoading"
+              >
+                <v-icon left small>mdi-shield-account</v-icon>
+                获取管理员账户（测试用）
+              </v-btn>
+            </div>
           </v-card-actions>
         </v-card>
       </v-col>
@@ -93,7 +107,8 @@ export default {
       show: false,
       text: '',
       color: ''
-    }
+    },
+    adminLoading: false
   }),
 
   methods: {
@@ -120,6 +135,24 @@ export default {
         show: true,
         text,
         color
+      }
+    },
+
+    async getAdminAccount() {
+      this.adminLoading = true
+      this.errorMessage = ''
+      
+      try {
+        const response = await this.$store.dispatch('auth/getAdminForTest')
+        console.log('管理员账户:', response)
+        
+        this.$emit('show-message', { text: '已登录管理员账户', color: 'success' })
+        this.$router.push('/admin')
+      } catch (error) {
+        console.error('获取管理员账户失败:', error)
+        this.errorMessage = '获取管理员账户失败，请重试'
+      } finally {
+        this.adminLoading = false
       }
     }
   }

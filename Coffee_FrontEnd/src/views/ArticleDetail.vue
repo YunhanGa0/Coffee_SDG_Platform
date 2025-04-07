@@ -22,11 +22,11 @@
                 <div>
                   <div class="article-info d-flex align-center flex-wrap">
                     <span class="text-body-2 grey--text text--darken-1">
-                      发布于 {{ formatDate(article.createdAt) }}
+                      Published on {{ formatDate(article.createdAt) }}
                     </span>
                     <v-divider vertical class="mx-3" v-if="article.updatedAt && article.updatedAt !== article.createdAt"></v-divider>
                     <span class="text-body-2 grey--text" v-if="article.updatedAt && article.updatedAt !== article.createdAt">
-                      更新于 {{ formatDate(article.updatedAt) }}
+                      Updated on {{ formatDate(article.updatedAt) }}
                     </span>
                   </div>
                 </div>
@@ -80,7 +80,7 @@
                   @click="$router.push('/articles')"
                 >
                   <v-icon left>mdi-arrow-left</v-icon>
-                  返回文章列表
+                  Back to Articles
                 </v-btn>
                 
                 <div class="d-flex mt-3 mt-sm-0">
@@ -98,7 +98,7 @@
           <!-- 相关文章推荐 -->
           <transition name="fade" appear>
             <div class="related-articles mt-8 pt-4">
-              <h3 class="text-h5 font-weight-bold mb-5">猜你喜欢</h3>
+              <h3 class="text-h5 font-weight-bold mb-5">You May Also Like</h3>
               <v-row>
                 <v-col cols="12" sm="6" v-for="n in 2" :key="n">
                   <v-card class="card-hover" outlined>
@@ -110,8 +110,8 @@
                         class="flex-shrink-0"
                       ></v-img>
                       <v-card-text class="py-2">
-                        <div class="text-subtitle-1 font-weight-bold">可持续咖啡种植的未来发展</div>
-                        <div class="text-caption grey--text mt-1">2023年7月15日</div>
+                        <div class="text-subtitle-1 font-weight-bold">Future Development of Sustainable Coffee Cultivation</div>
+                        <div class="text-caption grey--text mt-1">July 15, 2023</div>
                       </v-card-text>
                     </div>
                   </v-card>
@@ -137,7 +137,7 @@
           v-bind="attrs"
           @click="snackbar.show = false"
         >
-          关闭
+          Close
         </v-btn>
       </template>
     </v-snackbar>
@@ -183,7 +183,7 @@ export default {
     formatDate(date) {
       if (!date) return ''
       const d = new Date(date)
-      return `${d.getFullYear()}年${d.getMonth() + 1}月${d.getDate()}日`
+      return `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`
     },
     showMessage(text, color = 'success') {
       this.snackbar = {

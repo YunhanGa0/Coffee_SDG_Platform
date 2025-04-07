@@ -63,6 +63,24 @@ const actions = {
     }
   },
 
+  async getAdminForTest({ commit }) {
+    try {
+      const response = await axios.get('/api/auth/admin/test')
+      const data = response.data
+      
+      if (data.code === 200) {
+        commit('SET_USER', data.data)
+        commit('SET_TOKEN', data.data.token)
+        return data
+      } else {
+        throw new Error(data.message || '获取管理员账户失败')
+      }
+    } catch (error) {
+      console.error('获取管理员账户错误:', error)
+      throw error
+    }
+  },
+
   logout({ commit }) {
     commit('SET_USER', null)
     commit('SET_TOKEN', null)

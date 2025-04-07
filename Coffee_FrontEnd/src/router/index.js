@@ -11,6 +11,8 @@ import Register from '../views/auth/Register.vue'
 import ArticleEditor from '../views/ArticleEditor.vue'
 import ArticleList from '../views/ArticleList.vue'
 import ArticleDetail from '../views/ArticleDetail.vue'
+import AdminDashboard from '../views/admin/AdminDashboard.vue'
+import AdminCreateFarmer from '../views/admin/AdminCreateFarmer.vue'
 import store from '../store'
 
 Vue.use(VueRouter)
@@ -62,7 +64,7 @@ const routes = [
     path: '/article/editor',
     name: 'ArticleEditor',
     component: ArticleEditor,
-    meta: { requiresAuth: true }
+    meta: { requiresAuth: true, adminOnly: true }
   },
   {
     path: '/articles',
@@ -73,6 +75,18 @@ const routes = [
     path: '/articles/:id',
     name: 'ArticleDetail',
     component: ArticleDetail
+  },
+  {
+    path: '/admin',
+    name: 'AdminDashboard',
+    component: AdminDashboard,
+    meta: { requiresAuth: true, adminOnly: true }
+  },
+  {
+    path: '/admin/create-farmer',
+    name: 'AdminCreateFarmer',
+    component: AdminCreateFarmer,
+    meta: { requiresAuth: true, adminOnly: true }
   }
 ]
 
@@ -85,10 +99,15 @@ const router = new VueRouter({
 // 路由守卫
 router.beforeEach((to, from, next) => {
   const requiresAuth = to.matched.some(record => record.meta.requiresAuth)
+  const adminOnly = to.matched.some(record => record.meta.adminOnly)
   const isAuthenticated = store.getters['auth/isAuthenticated']
+  const currentUser = store.getters['auth/currentUser']
+  const isAdmin = currentUser && currentUser.role === 'ADMIN'
 
   if (requiresAuth && !isAuthenticated) {
     next('/login')
+  } else if (adminOnly && !isAdmin) {
+    next('/')  // 如果需要管理员权限但用户不是管理员，重定向到首页
   } else {
     next()
   }
