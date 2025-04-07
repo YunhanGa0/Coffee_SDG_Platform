@@ -3,19 +3,19 @@
     <v-container>
       <v-row>
         <v-col cols="12">
-          <h1 class="admin-title primary--text">管理员控制台</h1>
+          <h1 class="admin-title primary--text">Admin Dashboard</h1>
           <v-divider class="mt-2 mb-6"></v-divider>
         </v-col>
       </v-row>
 
-      <!-- 功能卡片 -->
+      <!-- Feature Cards -->
       <v-row>
         <v-col cols="12" md="4">
           <v-card class="admin-card" height="200" to="/article/editor" hover>
             <v-card-text class="d-flex flex-column justify-center align-center h-100">
               <v-icon size="48" color="primary">mdi-pencil</v-icon>
-              <div class="text-h5 mt-4">创建文章</div>
-              <div class="text-body-2 text-center mt-2">发布新的文章内容</div>
+              <div class="text-h5 mt-4">Create Article</div>
+              <div class="text-body-2 text-center mt-2">Publish new article content</div>
             </v-card-text>
           </v-card>
         </v-col>
@@ -24,8 +24,8 @@
           <v-card class="admin-card" height="200" to="/admin/create-farmer" hover>
             <v-card-text class="d-flex flex-column justify-center align-center h-100">
               <v-icon size="48" color="green">mdi-account-plus</v-icon>
-              <div class="text-h5 mt-4">添加农户</div>
-              <div class="text-body-2 text-center mt-2">为咖啡生产者创建账户</div>
+              <div class="text-h5 mt-4">Add Farmer</div>
+              <div class="text-body-2 text-center mt-2">Create accounts for coffee producers</div>
             </v-card-text>
           </v-card>
         </v-col>
@@ -34,17 +34,17 @@
           <v-card class="admin-card" height="200" hover>
             <v-card-text class="d-flex flex-column justify-center align-center h-100">
               <v-icon size="48" color="blue">mdi-clipboard-list</v-icon>
-              <div class="text-h5 mt-4">农场审核</div>
-              <div class="text-body-2 text-center mt-2">审核农场认证申请</div>
+              <div class="text-h5 mt-4">Farm Review</div>
+              <div class="text-body-2 text-center mt-2">Review farm certification applications</div>
             </v-card-text>
           </v-card>
         </v-col>
       </v-row>
 
-      <!-- 统计信息 -->
+      <!-- Statistics -->
       <v-row class="mt-8">
         <v-col cols="12">
-          <h2 class="admin-subtitle">平台统计</h2>
+          <h2 class="admin-subtitle">Platform Statistics</h2>
           <v-divider class="mt-2 mb-4"></v-divider>
         </v-col>
         
@@ -52,7 +52,7 @@
           <v-card class="stat-card" color="primary" dark>
             <v-card-text>
               <div class="text-h4 font-weight-bold">{{ stats.totalArticles }}</div>
-              <div class="text-subtitle-2">总文章数</div>
+              <div class="text-subtitle-2">Total Articles</div>
             </v-card-text>
             <v-progress-linear
               v-if="loading.stats"
@@ -66,7 +66,7 @@
           <v-card class="stat-card" color="success" dark>
             <v-card-text>
               <div class="text-h4 font-weight-bold">{{ stats.totalFarmers }}</div>
-              <div class="text-subtitle-2">注册农户</div>
+              <div class="text-subtitle-2">Registered Farmers</div>
             </v-card-text>
             <v-progress-linear
               v-if="loading.stats"
@@ -80,7 +80,7 @@
           <v-card class="stat-card" color="warning" dark>
             <v-card-text>
               <div class="text-h4 font-weight-bold">{{ stats.certifiedFarms }}</div>
-              <div class="text-subtitle-2">认证农场</div>
+              <div class="text-subtitle-2">Certified Farms</div>
             </v-card-text>
             <v-progress-linear
               v-if="loading.stats"
@@ -94,7 +94,7 @@
           <v-card class="stat-card" color="info" dark>
             <v-card-text>
               <div class="text-h4 font-weight-bold">{{ stats.totalUsers }}</div>
-              <div class="text-subtitle-2">用户注册数</div>
+              <div class="text-subtitle-2">Total Users</div>
             </v-card-text>
             <v-progress-linear
               v-if="loading.stats"
@@ -105,10 +105,10 @@
         </v-col>
       </v-row>
 
-      <!-- 最近文章 -->
+      <!-- Recent Articles -->
       <v-row class="mt-8">
         <v-col cols="12">
-          <h2 class="admin-subtitle">最近文章</h2>
+          <h2 class="admin-subtitle">Recent Articles</h2>
           <v-divider class="mt-2 mb-4"></v-divider>
         </v-col>
         
@@ -122,13 +122,13 @@
           >
             <template v-slot:item.action="{ item }">
               <v-btn small text color="primary" :to="'/articles/' + item.id">
-                查看
+                View
               </v-btn>
               <v-btn small text color="green" :to="'/article/editor/' + item.id">
-                编辑
+                Edit
               </v-btn>
               <v-btn small text color="red" @click="deleteArticle(item.id)">
-                删除
+                Delete
               </v-btn>
             </template>
 
@@ -137,7 +137,7 @@
                 {{ error.articles }}
               </div>
               <div v-else class="text-center">
-                暂无文章数据
+                No articles found
               </div>
             </template>
           </v-data-table>
@@ -156,11 +156,11 @@ export default {
     return {
       articleHeaders: [
         { text: 'ID', value: 'id', width: '80px' },
-        { text: '标题', value: 'title', width: '30%' },
-        { text: '作者', value: 'author' },
-        { text: '发布日期', value: 'publishDate' },
-        { text: '状态', value: 'status' },
-        { text: '操作', value: 'action', sortable: false, width: '150px' }
+        { text: 'Title', value: 'title', width: '30%' },
+        { text: 'Author', value: 'author' },
+        { text: 'Publish Date', value: 'publishDate' },
+        { text: 'Status', value: 'status' },
+        { text: 'Actions', value: 'action', sortable: false, width: '150px' }
       ],
       recentArticles: [],
       stats: {
@@ -195,15 +195,15 @@ export default {
           this.recentArticles = response.data.data.map(article => ({
             id: article.id,
             title: article.title,
-            author: article.author || '管理员',
+            author: article.author || 'Admin',
             publishDate: new Date(article.createTime || article.createDate).toLocaleDateString(),
-            status: article.status === 1 ? '已发布' : '草稿'
+            status: article.status === 1 ? 'Published' : 'Draft'
           }))
           this.stats.totalArticles = this.recentArticles.length
         }
       } catch (error) {
-        console.error('获取文章列表失败:', error)
-        this.error.articles = '获取文章列表失败'
+        console.error('Failed to fetch articles:', error)
+        this.error.articles = 'Failed to fetch articles'
       } finally {
         this.loading.articles = false
       }
@@ -217,8 +217,8 @@ export default {
           this.stats = response.data.data
         }
       } catch (error) {
-        console.error('获取统计数据失败:', error)
-        this.error.stats = '获取统计数据失败'
+        console.error('Failed to fetch statistics:', error)
+        this.error.stats = 'Failed to fetch statistics'
       } finally {
         this.loading.stats = false
       }
@@ -231,7 +231,7 @@ export default {
           this.stats.totalArticles = this.recentArticles.length
         }
       } catch (error) {
-        console.error('删除文章失败:', error)
+        console.error('Failed to delete article:', error)
       }
     }
   }

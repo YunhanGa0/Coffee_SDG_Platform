@@ -46,7 +46,7 @@
     <v-dialog v-model="showVideo" max-width="900">
       <v-card>
         <v-card-title class="headline">
-          星巴克可持续发展故事
+          Starbucks Sustainability Story
           <v-spacer></v-spacer>
           <v-btn icon @click="showVideo = false">
             <v-icon>mdi-close</v-icon>
@@ -146,9 +146,9 @@
         <v-container class="fill-height">
           <v-row align="center" justify="center">
             <v-col cols="12" md="8" class="text-center">
-              <h2 class="text-h2 font-weight-bold white--text mb-6">探索咖啡世界</h2>
+              <h2 class="text-h2 font-weight-bold white--text mb-6">Explore Coffee World</h2>
               <p class="text-h6 white--text mb-8">
-                通过我们的互动地图，了解全球咖啡产地和可持续农业的故事
+                Discover global coffee origins and sustainable farming stories through our interactive map
               </p>
               <v-btn
                 x-large
@@ -158,7 +158,7 @@
                 :to="{ path: '/explore' }"
                 class="explore-map-btn"
               >
-                打开全球咖啡地图
+                Open Global Coffee Map
                 <v-icon right>mdi-map</v-icon>
               </v-btn>
             </v-col>

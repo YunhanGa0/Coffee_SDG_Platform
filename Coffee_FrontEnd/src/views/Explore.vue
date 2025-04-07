@@ -10,10 +10,10 @@
         <v-container class="fill-height">
           <v-row align="center" justify="center">
             <v-col cols="12" class="text-center">
-              <h1 class="text-h2 font-weight-bold white--text mb-4">探索咖啡世界</h1>
+              <h1 class="text-h2 font-weight-bold white--text mb-4">Explore Coffee Origins</h1>
               <div class="divider-line mb-4"></div>
               <p class="text-h6 white--text">
-                发现全球顶级咖啡产区，了解咖啡的起源与风味
+                Discover global premium coffee origins and learn about their heritage and flavors
               </p>
             </v-col>
           </v-row>
@@ -37,7 +37,7 @@
             <v-card class="region-card h-100" elevation="2">
               <v-card-title class="primary--text font-weight-bold">
                 <v-icon color="primary" class="mr-2">mdi-map-marker</v-icon>
-                咖啡产区信息
+                Region Information
               </v-card-title>
               <v-divider></v-divider>
               <v-card-text class="pt-4">
@@ -100,7 +100,7 @@
                     class="mb-4"
                   ></v-img>
                   <p class="text-center grey--text text--darken-1">
-                    点击地图上的咖啡产区查看详细信息
+                    Click on a coffee region on the map to view detailed information
                   </p>
                 </div>
               </v-card-text>
@@ -111,7 +111,7 @@
             <v-card class="info-card h-100" elevation="2">
               <v-card-title class="primary--text font-weight-bold">
                 <v-icon color="primary" class="mr-2">mdi-coffee</v-icon>
-                咖啡知识
+                Coffee Knowledge
               </v-card-title>
               <v-divider></v-divider>
               <v-card-text class="pt-4">
@@ -124,15 +124,15 @@
                 >
                   <v-tab class="tab-button">
                     <v-icon left>mdi-sprout</v-icon>
-                    种植
+                    Growing
                   </v-tab>
                   <v-tab class="tab-button">
                     <v-icon left>mdi-fire</v-icon>
-                    烘焙
+                    Roasting
                   </v-tab>
                   <v-tab class="tab-button">
                     <v-icon left>mdi-coffee-maker</v-icon>
-                    冲泡
+                    Brewing
                   </v-tab>
                 </v-tabs>
 
@@ -144,9 +144,9 @@
                         height="200"
                         class="rounded-lg mb-4"
                       ></v-img>
-                      <p class="text-body-1 mb-3">咖啡种植主要分布在南北回归线之间的"咖啡带"地区，这些地区拥有适宜的气候条件和海拔高度。</p>
-                      <p class="text-body-1 mb-3">优质咖啡通常生长在高海拔地区（1200-2000米），温度适中（15-24°C），降雨充足的环境中。</p>
-                      <p class="text-body-1">咖啡树从种植到首次收获通常需要3-4年时间，随后可以持续生产20-30年。</p>
+                      <p class="text-body-1 mb-3">Coffee cultivation is mainly distributed in the "coffee belt" region between the Tropic of Cancer and the Tropic of Capricorn, where suitable climate conditions and altitude exist.</p>
+                      <p class="text-body-1 mb-3">High-quality coffee typically grows in high-altitude areas (1,200-2,000m), with moderate temperatures (15-24°C) and adequate rainfall.</p>
+                      <p class="text-body-1">Coffee trees take 3-4 years from planting to first harvest, and can continue producing for 20-30 years.</p>
                     </div>
                   </v-tab-item>
                   <v-tab-item>
@@ -156,9 +156,9 @@
                         height="200"
                         class="rounded-lg mb-4"
                       ></v-img>
-                      <p class="text-body-1 mb-3">咖啡烘焙是将生豆转变为可饮用咖啡的关键步骤，烘焙程度从浅到深会产生不同的风味特点。</p>
-                      <p class="text-body-1 mb-3">浅烘焙保留更多原始风味和酸度，突出咖啡的果香和花香；中烘焙增加甜度和平衡性；深烘焙则增加苦味和烘烤香气。</p>
-                      <p class="text-body-1">烘焙过程中的"一爆"和"二爆"是判断烘焙程度的重要指标，代表着咖啡豆内部的物理和化学变化。</p>
+                      <p class="text-body-1 mb-3">Coffee roasting is the key step in transforming green beans into drinkable coffee. Different roasting levels, from light to dark, produce distinct flavor characteristics.</p>
+                      <p class="text-body-1 mb-3">Light roasts preserve more original flavors and acidity, highlighting fruity and floral notes; medium roasts enhance sweetness and balance; dark roasts increase bitterness and roasted aromas.</p>
+                      <p class="text-body-1">The "first crack" and "second crack" during roasting are important indicators of roasting level, representing physical and chemical changes within the coffee beans.</p>
                     </div>
                   </v-tab-item>
                   <v-tab-item>
@@ -168,9 +168,9 @@
                         height="200"
                         class="rounded-lg mb-4"
                       ></v-img>
-                      <p class="text-body-1 mb-3">咖啡冲泡方式多样，包括滴滤、虹吸、法压、意式浓缩等，不同的冲泡方式会强调咖啡的不同风味特点。</p>
-                      <p class="text-body-1 mb-3">水温（88-96°C）、研磨度、咖啡粉水比（1:15-1:18）、萃取时间都是影响咖啡风味的关键因素。</p>
-                      <p class="text-body-1">手冲咖啡讲究水流的控制，好的注水技巧能够均匀萃取咖啡粉中的可溶性物质，带来更平衡的风味。</p>
+                      <p class="text-body-1 mb-3">Coffee brewing methods are diverse, including drip, siphon, French press, and espresso. Different brewing methods emphasize different flavor characteristics of the coffee.</p>
+                      <p class="text-body-1 mb-3">Water temperature (88-96°C), grind size, coffee-to-water ratio (1:15-1:18), and extraction time are key factors affecting coffee flavor.</p>
+                      <p class="text-body-1">Pour-over coffee requires precise water flow control. Good pouring technique can evenly extract soluble substances from the coffee grounds, resulting in a more balanced flavor.</p>
                     </div>
                   </v-tab-item>
                 </v-tabs-items>
@@ -181,14 +181,87 @@
       </v-container>
     </section>
 
+    <!-- 搜索和筛选区域 -->
+    <v-row>
+      <v-col cols="12" md="6">
+        <v-text-field
+          v-model="searchQuery"
+          label="Search Origins"
+          prepend-icon="mdi-magnify"
+          outlined
+          dense
+          clearable
+          @input="handleSearch"
+        ></v-text-field>
+      </v-col>
+      <v-col cols="12" md="6">
+        <v-select
+          v-model="selectedRegion"
+          :items="regions"
+          label="Filter by Region"
+          outlined
+          dense
+          clearable
+          @change="handleFilter"
+        ></v-select>
+      </v-col>
+    </v-row>
+
+    <!-- 产地列表 -->
+    <v-row>
+      <v-col
+        v-for="origin in filteredOrigins"
+        :key="origin.id"
+        cols="12"
+        sm="6"
+        md="4"
+      >
+        <v-card
+          class="origin-card"
+          :to="'/origins/' + origin.id"
+          hover
+          elevation="2"
+        >
+          <v-img
+            :src="origin.image"
+            height="200"
+            class="origin-image"
+          ></v-img>
+
+          <v-card-title class="origin-title">
+            {{ origin.name }}
+          </v-card-title>
+
+          <v-card-text>
+            <p class="origin-description">{{ origin.description }}</p>
+            <div class="d-flex align-center mt-4">
+              <v-icon small color="grey" class="mr-1">mdi-map-marker</v-icon>
+              <span class="text-caption grey--text">
+                {{ origin.region }}
+              </span>
+            </div>
+          </v-card-text>
+        </v-card>
+      </v-col>
+    </v-row>
+
+    <!-- 无数据提示 -->
+    <v-row v-if="filteredOrigins.length === 0">
+      <v-col cols="12" class="text-center">
+        <v-icon size="64" color="grey lighten-1" class="mb-4">mdi-map-search-outline</v-icon>
+        <h3 class="text-h5 grey--text">No origins found</h3>
+        <p class="body-2 grey--text mt-2">Try adjusting your search criteria</p>
+      </v-col>
+    </v-row>
+
     <!-- 产区比较部分 -->
     <section class="compare-section py-12 grey-bg">
       <v-container>
         <v-row justify="center">
           <v-col cols="12" class="text-center mb-8">
-            <h2 class="section-title">主要产区比较</h2>
+            <h2 class="section-title">Major Region Comparison</h2>
             <p class="section-subtitle">
-              不同产区的咖啡因其生长环境与处理方式的差异，展现出独特的风味特点
+              Coffee from different regions exhibits unique flavor characteristics due to variations in growing environment and processing methods
             </p>
           </v-col>
         </v-row>
@@ -216,12 +289,12 @@
               <v-card-text>
                 <div class="region-flavor mb-2">
                   <v-icon small color="amber darken-2" class="mr-1">mdi-star</v-icon>
-                  <span class="font-weight-medium">风味：</span>
+                  <span class="font-weight-medium">Flavor: </span>
                   <span>{{ region.flavor }}</span>
                 </div>
                 <div class="region-altitude">
                   <v-icon small color="green darken-1" class="mr-1">mdi-altitude</v-icon>
-                  <span class="font-weight-medium">海拔：</span>
+                  <span class="font-weight-medium">Altitude: </span>
                   <span>{{ region.altitude }}</span>
                 </div>
               </v-card-text>
@@ -252,7 +325,32 @@ export default {
         { name: '哥斯达黎加', value: 4200, varieties: '卡杜拉，卡图拉，维拉萨奇', flavor: '平衡，柑橘，焦糖', altitude: '1200-1800米', image: 'costa_rica.jpg' },
         { name: '印度尼西亚', value: 6300, varieties: '爪哇，苏门答腊', flavor: '泥土气息，香料，低酸度', altitude: '1000-1500米', image: 'indonesia.jpg' },
         { name: '越南', value: 10200, varieties: '罗布斯塔，卡蒂姆', flavor: '强烈，坚果，可可', altitude: '600-800米', image: 'vietnam.jpg' }
-      ]
+      ],
+      regions: [
+        'Africa',
+        'Asia',
+        'Central America',
+        'South America',
+        'Oceania'
+      ],
+      origins: [
+        {
+          id: 1,
+          name: 'Ethiopia',
+          description: 'The birthplace of coffee, known for its distinctive floral and citrus notes.',
+          region: 'Africa',
+          image: require('@/assets/pic/coffee_pick.jpg')
+        },
+        {
+          id: 2,
+          name: 'Colombia',
+          description: 'Famous for its balanced, medium-bodied coffee with caramel sweetness.',
+          region: 'South America',
+          image: require('@/assets/pic/coffee_pick.jpg')
+        }
+      ],
+      searchQuery: '',
+      filteredOrigins: []
     }
   },
   mounted() {
@@ -373,6 +471,14 @@ export default {
       }
       
       return imageMap[regionName] || require('@/assets/pic/咖啡园区3.jpg')
+    },
+    handleSearch() {
+      // 实现搜索逻辑
+      console.log('Searching for:', this.searchQuery)
+    },
+    handleFilter() {
+      // 实现筛选逻辑
+      console.log('Filtering by region:', this.selectedRegion)
     }
   }
 }

@@ -99,10 +99,10 @@
               mdi-text-box-search-outline
             </v-icon>
             <h3 class="title grey--text text--darken-1 mt-4">
-              暂无相关文章
+              No articles found
             </h3>
             <p class="body-2 grey--text mt-2">
-              该分类下暂时没有文章，请稍后再来查看
+              No articles found in the selected category. Please try again later.
             </p>
           </v-card>
         </v-col>
@@ -124,8 +124,16 @@ export default {
         { text: '申请甄选农场', value: 'selection' },
         { text: '在线学习视频', value: 'learning' }
       ],
-      // 示例文章数据，后期从后端获取
-      articles: []
+      articles: [],
+      loading: false,
+      page: 1,
+      pageSize: 9,
+      hasMore: true,
+      snackbar: {
+        show: false,
+        text: '',
+        color: 'error'
+      }
     }
   },
   computed: {
@@ -148,6 +156,44 @@ export default {
     viewArticle(id) {
       // 后期实现文章详情页跳转
       console.log('View article:', id)
+    },
+    async fetchArticles() {
+      try {
+        // 实现从后端获取文章的逻辑
+        // 这里使用一个简单的模拟数据
+        this.articles = [
+          { id: 1, title: 'Article 1', summary: 'This is the summary of Article 1', category: 'all', date: '2024-04-01', image: require('@/assets/pic/coffee_pick.jpg') },
+          { id: 2, title: 'Article 2', summary: 'This is the summary of Article 2', category: 'all', date: '2024-04-02', image: require('@/assets/pic/coffee_pick.jpg') },
+          { id: 3, title: 'Article 3', summary: 'This is the summary of Article 3', category: 'all', date: '2024-04-03', image: require('@/assets/pic/coffee_pick.jpg') }
+        ]
+      } catch (error) {
+        console.error('Failed to fetch articles:', error)
+        this.showMessage('Failed to fetch articles', 'error')
+      } finally {
+        this.loading = false
+      }
+    },
+    async loadMore() {
+      try {
+        this.loading = true
+        // 实现加载更多文章的逻辑
+        // 这里使用一个简单的模拟数据
+        this.articles = [
+          ...this.articles,
+          { id: 4, title: 'Article 4', summary: 'This is the summary of Article 4', category: 'all', date: '2024-04-04', image: require('@/assets/pic/coffee_pick.jpg') },
+          { id: 5, title: 'Article 5', summary: 'This is the summary of Article 5', category: 'all', date: '2024-04-05', image: require('@/assets/pic/coffee_pick.jpg') }
+        ]
+      } catch (error) {
+        console.error('Failed to load more articles:', error)
+        this.showMessage('Failed to load more articles', 'error')
+      } finally {
+        this.loading = false
+      }
+    },
+    showMessage(message, color) {
+      this.snackbar.text = message
+      this.snackbar.color = color
+      this.snackbar.show = true
     }
   }
 }

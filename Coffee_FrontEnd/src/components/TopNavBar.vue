@@ -64,7 +64,7 @@
           to="/login"
         >
           <v-icon left>mdi-login</v-icon>
-          登录
+          Login
         </v-btn>
         <v-btn
           color="primary"
@@ -72,7 +72,7 @@
           to="/register"
         >
           <v-icon left>mdi-account-plus</v-icon>
-          注册
+          Register
         </v-btn>
       </template>
 
@@ -88,7 +88,7 @@
               v-on="on"
             >
               <v-icon left>mdi-account-circle</v-icon>
-              {{ currentUser ? currentUser.username : '用户' }}
+              {{ currentUser ? currentUser.username : 'User' }}
               <v-icon right>mdi-chevron-down</v-icon>
             </v-btn>
           </template>
@@ -97,26 +97,26 @@
               <v-list-item-icon>
                 <v-icon>mdi-account-edit</v-icon>
               </v-list-item-icon>
-              <v-list-item-title>个人信息</v-list-item-title>
+              <v-list-item-title>Profile</v-list-item-title>
             </v-list-item>
             <v-list-item v-if="isAdmin" to="/admin">
               <v-list-item-icon>
                 <v-icon>mdi-shield-account</v-icon>
               </v-list-item-icon>
-              <v-list-item-title>管理后台</v-list-item-title>
+              <v-list-item-title>Admin Panel</v-list-item-title>
             </v-list-item>
             <v-list-item v-if="isAdmin" to="/article/editor">
               <v-list-item-icon>
                 <v-icon>mdi-pencil</v-icon>
               </v-list-item-icon>
-              <v-list-item-title>写文章</v-list-item-title>
+              <v-list-item-title>Write Article</v-list-item-title>
             </v-list-item>
             <v-divider></v-divider>
             <v-list-item @click="handleLogout">
               <v-list-item-icon>
                 <v-icon>mdi-logout</v-icon>
               </v-list-item-icon>
-              <v-list-item-title>退出登录</v-list-item-title>
+              <v-list-item-title>Logout</v-list-item-title>
             </v-list-item>
           </v-list>
         </v-menu>
@@ -127,7 +127,7 @@
     <v-dialog v-model="showSearch" max-width="600">
       <v-card>
         <v-card-title class="headline">
-          搜索
+          Search
           <v-spacer></v-spacer>
           <v-btn icon @click="showSearch = false">
             <v-icon>mdi-close</v-icon>
@@ -136,7 +136,7 @@
         <v-card-text>
           <v-text-field
             v-model="searchQuery"
-            label="搜索内容"
+            label="Search content"
             prepend-icon="mdi-magnify"
             clearable
             @keyup.enter="handleSearch"
@@ -169,13 +169,13 @@
             <v-list-item-icon>
               <v-icon>mdi-login</v-icon>
             </v-list-item-icon>
-            <v-list-item-title>登录</v-list-item-title>
+            <v-list-item-title>Login</v-list-item-title>
           </v-list-item>
           <v-list-item to="/register">
             <v-list-item-icon>
               <v-icon>mdi-account-plus</v-icon>
             </v-list-item-icon>
-            <v-list-item-title>注册</v-list-item-title>
+            <v-list-item-title>Register</v-list-item-title>
           </v-list-item>
         </template>
         <!-- 移动端的用户菜单 -->
@@ -184,25 +184,25 @@
             <v-list-item-icon>
               <v-icon>mdi-account-edit</v-icon>
             </v-list-item-icon>
-            <v-list-item-title>个人信息</v-list-item-title>
+            <v-list-item-title>Profile</v-list-item-title>
           </v-list-item>
           <v-list-item v-if="isAdmin" to="/admin">
             <v-list-item-icon>
               <v-icon>mdi-shield-account</v-icon>
             </v-list-item-icon>
-            <v-list-item-title>管理后台</v-list-item-title>
+            <v-list-item-title>Admin Panel</v-list-item-title>
           </v-list-item>
           <v-list-item v-if="isAdmin" to="/article/editor">
             <v-list-item-icon>
               <v-icon>mdi-pencil</v-icon>
             </v-list-item-icon>
-            <v-list-item-title>写文章</v-list-item-title>
+            <v-list-item-title>Write Article</v-list-item-title>
           </v-list-item>
           <v-list-item @click="handleLogout">
             <v-list-item-icon>
               <v-icon>mdi-logout</v-icon>
             </v-list-item-icon>
-            <v-list-item-title>退出登录</v-list-item-title>
+            <v-list-item-title>Logout</v-list-item-title>
           </v-list-item>
         </template>
       </v-list>
@@ -221,11 +221,11 @@ export default {
     searchQuery: '',
     drawer: false,
     menuItems: [
-      { title: '首页', path: '/' },
-      { title: '咖啡庄园', path: '/plantation' },
-      { title: '农民支持', path: '/farmer-support' },
-      { title: '探索地图', path: '/explore' },
-      { title: '关于我们', path: '/about' }
+      { title: 'Home', path: '/' },
+      { title: 'Coffee Plantations', path: '/plantation' },
+      { title: 'Farmer Support', path: '/farmer-support' },
+      { title: 'Explore Map', path: '/explore' },
+      { title: 'About Us', path: '/about' }
     ]
   }),
 
@@ -242,10 +242,10 @@ export default {
     async handleLogout() {
       try {
         await this.logout()
-        this.$emit('show-message', { text: '已退出登录', color: 'success' })
+        this.$emit('show-message', { text: 'Logged out successfully', color: 'success' })
         this.$router.push('/login')
       } catch (error) {
-        this.$emit('show-message', { text: '退出失败', color: 'error' })
+        this.$emit('show-message', { text: 'Logout failed', color: 'error' })
       }
     },
 

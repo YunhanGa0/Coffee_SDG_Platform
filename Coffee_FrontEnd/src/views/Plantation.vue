@@ -18,10 +18,10 @@
                 cols="12"
               >
                 <v-slide-y-transition>
-                  <h1 class="text-h2 font-weight-bold white--text mb-4">种植庄园</h1>
+                  <h1 class="text-h2 font-weight-bold white--text mb-4">Coffee Plantations</h1>
                 </v-slide-y-transition>
                 <v-slide-y-transition>
-                  <h4 class="text-h5 white--text">可持续的咖啡种植与生产</h4>
+                  <h4 class="text-h5 white--text">Sustainable Coffee Cultivation and Production</h4>
                 </v-slide-y-transition>
                 <v-slide-y-transition>
                   <v-btn
@@ -32,7 +32,7 @@
                     @click="scrollToContent"
                     :ripple="{ class: 'white--text' }"
                   >
-                    探索更多
+                    Explore More
                     <v-icon right>mdi-chevron-down</v-icon>
                   </v-btn>
                 </v-slide-y-transition>
@@ -47,7 +47,7 @@
       <v-row>
         <v-col cols="12" md="6">
           <v-slide-x-transition>
-            <h2 class="text-h4 font-weight-bold mb-6 primary--text">我们的庄园理念</h2>
+            <h2 class="text-h4 font-weight-bold mb-6 primary--text">Our Plantation Philosophy</h2>
           </v-slide-x-transition>
           <v-hover v-slot="{ hover }">
             <v-card
@@ -57,22 +57,22 @@
             >
               <v-card-text>
                 <p class="text-body-1 mb-4">
-                  星巴克致力于采购道德咖啡豆，以保护生物多样性并促进咖啡种植社区的繁荣发展。
+                  Starbucks is committed to sourcing ethical coffee beans to protect biodiversity and promote the prosperity of coffee-growing communities.
                 </p>
                 <p class="text-body-1 mb-4">
-                  我们与全球超过400,000名咖啡种植者合作，提供农业实践的专业知识，并积极支持咖啡种植者改善生计。
+                  We collaborate with over 400,000 coffee farmers worldwide, providing expertise in agricultural practices and actively supporting coffee farmers to improve their livelihoods.
                 </p>
                 <p class="text-body-1 mb-8">
-                  通过我们的C.A.F.E.实践（咖啡与农民公平关系）计划，我们确保咖啡以符合环境、社会和经济标准的方式生产。
+                  Through our C.A.F.E. Practices (Coffee and Farmer Equity) program, we ensure coffee is produced in a way that meets environmental, social, and economic standards.
                 </p>
                 <v-chip-group
                   column
                   show-arrows
                 >
-                  <v-chip color="primary" outlined pill>可持续发展</v-chip>
-                  <v-chip color="primary" outlined pill>公平贸易</v-chip>
-                  <v-chip color="primary" outlined pill>生态保护</v-chip>
-                  <v-chip color="primary" outlined pill>社区支持</v-chip>
+                  <v-chip color="primary" outlined pill>Sustainable Development</v-chip>
+                  <v-chip color="primary" outlined pill>Fair Trade</v-chip>
+                  <v-chip color="primary" outlined pill>Ecological Protection</v-chip>
+                  <v-chip color="primary" outlined pill>Community Support</v-chip>
                 </v-chip-group>
               </v-card-text>
             </v-card>
@@ -128,10 +128,10 @@
       <v-row>
         <v-col cols="12" class="text-center mb-8">
           <v-slide-y-transition>
-            <h2 class="text-h4 font-weight-bold primary--text">全球精选庄园</h2>
+            <h2 class="text-h4 font-weight-bold primary--text">Global Selected Estates</h2>
           </v-slide-y-transition>
           <v-slide-y-transition>
-            <p class="text-subtitle-1 grey--text">探索我们在世界各地的优质咖啡种植基地</p>
+            <p class="text-subtitle-1 grey--text">Explore our premium coffee growing bases around the world</p>
           </v-slide-y-transition>
         </v-col>
       </v-row>
@@ -165,14 +165,14 @@
                       color="white"
                       @click="exploreEstate(estate.id)"
                     >
-                      了解详情
+                      View Details
                       <v-icon right>mdi-arrow-right</v-icon>
                     </v-btn>
                   </div>
                 </v-expand-transition>
               </v-img>
               <v-card-title class="primary--text">{{ estate.name }}</v-card-title>
-              <v-card-subtitle>海拔：{{ estate.altitude }}</v-card-subtitle>
+              <v-card-subtitle>Altitude: {{ estate.altitude }}</v-card-subtitle>
               <v-card-text>
                 <p>{{ estate.description }}</p>
                 <v-chip-group>
@@ -204,11 +204,11 @@
             >
               <v-card-text class="text-center py-12">
                 <v-slide-y-transition>
-                  <h3 class="text-h4 font-weight-bold mb-6">我们的承诺</h3>
+                  <h3 class="text-h4 font-weight-bold mb-6">Our Commitment</h3>
                 </v-slide-y-transition>
                 <v-slide-y-transition>
                   <p class="text-h6 font-weight-regular">
-                    到2025年，我们承诺实现100%可追溯的咖啡豆来源，并确保所有咖啡种植者获得公平的收入。
+                    By 2025, we commit to achieving 100% traceable coffee bean sources and ensuring all coffee farmers receive fair income.
                   </p>
                 </v-slide-y-transition>
                 <v-slide-y-transition>
@@ -218,7 +218,7 @@
                     large
                     @click="learnMore"
                   >
-                    了解更多
+                    Learn More
                     <v-icon right>mdi-arrow-right</v-icon>
                   </v-btn>
                 </v-slide-y-transition>
@@ -236,35 +236,35 @@ export default {
   name: 'Plantation',
   data: () => ({
     statistics: [
-      { value: '400K+', label: '合作咖啡种植者' },
-      { value: '30+', label: '种植国家' },
-      { value: '99%', label: '道德采购咖啡' },
-      { value: '50M+', label: '年度投资（美元）' }
+      { value: '400K+', label: 'Partner Coffee Farmers' },
+      { value: '30+', label: 'Growing Countries' },
+      { value: '99%', label: 'Ethically Sourced Coffee' },
+      { value: '50M+', label: 'Annual Investment (USD)' }
     ],
     estates: [
       {
         id: 'costa-rica',
-        name: '哥斯达黎加庄园',
-        altitude: '1,300-1,500米',
+        name: 'Costa Rica Estate',
+        altitude: '1,300-1,500m',
         image: 'https://stories.starbucks.com/uploads/2019/05/SBX20190509-Costa-Rica-Hacienda-Alsacia-0018.jpg',
-        description: '哥斯达黎加阿尔萨西亚是星巴克首个咖啡研发中心，专注于可持续种植技术的研发与推广。',
-        tags: ['阿拉比卡', '研发基地']
+        description: 'Costa Rica Hacienda Alsacia is Starbucks\' first coffee research and development center, focusing on sustainable cultivation technology research and promotion.',
+        tags: ['Arabica', 'R&D Base']
       },
       {
         id: 'colombia',
-        name: '哥伦比亚庄园',
-        altitude: '1,200-1,800米',
+        name: 'Colombia Estate',
+        altitude: '1,200-1,800m',
         image: 'https://stories.starbucks.com/uploads/2018/12/colombia-farmer-eibar-coffee.jpg',
-        description: '位于安第斯山脉的哥伦比亚庄园，以其独特的地理环境和传统种植工艺闻名于世。',
-        tags: ['卡图拉', '有机种植']
+        description: 'Located in the Andes Mountains, the Colombia Estate is renowned for its unique geographical environment and traditional cultivation techniques.',
+        tags: ['Caturra', 'Organic Farming']
       },
       {
         id: 'rwanda',
-        name: '卢旺达庄园',
-        altitude: '1,500-2,000米',
+        name: 'Rwanda Estate',
+        altitude: '1,500-2,000m',
         image: 'https://stories.starbucks.com/uploads/2022/04/SBX20220401-Starbucks-Rwanda-1024x683.jpg',
-        description: '卢旺达高原的火山土壤赋予了这里的咖啡独特的口感，是精品咖啡的重要产地。',
-        tags: ['波旁', '可持续']
+        description: 'The volcanic soil of the Rwanda Highlands gives the coffee here a unique taste, making it an important origin for specialty coffee.',
+        tags: ['Bourbon', 'Sustainable']
       }
     ]
   }),

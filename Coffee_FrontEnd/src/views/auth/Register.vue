@@ -4,14 +4,14 @@
       <v-col cols="12" sm="8" md="4">
         <v-card class="elevation-12">
           <v-toolbar color="primary" dark flat>
-            <v-toolbar-title>注册账号</v-toolbar-title>
+            <v-toolbar-title>Register</v-toolbar-title>
           </v-toolbar>
           <v-card-text>
             <v-form ref="form" v-model="valid" lazy-validation @submit.prevent="handleRegister">
               <v-text-field
                 v-model="formData.username"
                 :rules="usernameRules"
-                label="用户名"
+                label="Username"
                 prepend-icon="mdi-account"
                 autocomplete="username"
                 required
@@ -20,7 +20,7 @@
               <v-text-field
                 v-model="formData.email"
                 :rules="emailRules"
-                label="邮箱"
+                label="Email"
                 prepend-icon="mdi-email"
                 autocomplete="email"
                 required
@@ -29,7 +29,7 @@
               <v-text-field
                 v-model="formData.password"
                 :rules="passwordRules"
-                label="密码"
+                label="Password"
                 prepend-icon="mdi-lock"
                 :type="showPassword ? 'text' : 'password'"
                 :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
@@ -41,7 +41,7 @@
               <v-text-field
                 v-model="formData.confirmPassword"
                 :rules="confirmPasswordRules"
-                label="确认密码"
+                label="Confirm Password"
                 prepend-icon="mdi-lock-check"
                 :type="showPassword ? 'text' : 'password'"
                 autocomplete="new-password"
@@ -57,13 +57,13 @@
               :disabled="!valid"
               @click="handleRegister"
             >
-              注册
+              Register
             </v-btn>
             <v-btn
               text
               @click="$router.push('/login')"
             >
-              返回登录
+              Back to Login
             </v-btn>
           </v-card-actions>
         </v-card>
@@ -84,7 +84,7 @@
           v-bind="attrs"
           @click="snackbar.show = false"
         >
-          关闭
+          Close
         </v-btn>
       </template>
     </v-snackbar>
@@ -107,16 +107,16 @@ export default {
       confirmPassword: ''
     },
     usernameRules: [
-      v => !!v || '用户名不能为空',
-      v => v.length >= 3 || '用户名长度不能小于3个字符'
+      v => !!v || 'Username is required',
+      v => v.length >= 3 || 'Username must be at least 3 characters'
     ],
     emailRules: [
-      v => !!v || '邮箱不能为空',
-      v => /.+@.+\..+/.test(v) || '请输入有效的邮箱地址'
+      v => !!v || 'Email is required',
+      v => /.+@.+\..+/.test(v) || 'Please enter a valid email address'
     ],
     passwordRules: [
-      v => !!v || '密码不能为空',
-      v => v.length >= 6 || '密码长度不能小于6个字符'
+      v => !!v || 'Password is required',
+      v => v.length >= 6 || 'Password must be at least 6 characters'
     ],
     snackbar: {
       show: false,
@@ -128,8 +128,8 @@ export default {
   computed: {
     confirmPasswordRules() {
       return [
-        v => !!v || '请确认密码',
-        v => v === this.formData.password || '两次输入的密码不一致'
+        v => !!v || 'Please confirm your password',
+        v => v === this.formData.password || 'Passwords do not match'
       ]
     }
   },
@@ -148,15 +148,15 @@ export default {
         
         this.register(userData)
           .then(data => {
-            console.log('注册成功：', data)
-            this.showMessage('注册成功', 'success')
+            console.log('Registration successful:', data)
+            this.showMessage('Registration successful', 'success')
             setTimeout(() => {
               this.$router.push('/login')
             }, 1500)
           })
           .catch(error => {
-            console.error('注册错误：', error)
-            this.showMessage(error.message || '注册失败，请重试', 'error')
+            console.error('Registration error:', error)
+            this.showMessage(error.message || 'Registration failed, please try again', 'error')
           })
           .finally(() => {
             this.loading = false

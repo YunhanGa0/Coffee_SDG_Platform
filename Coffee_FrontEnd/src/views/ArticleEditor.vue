@@ -6,7 +6,7 @@
           <v-card class="pa-6">
             <v-text-field
               v-model="articleTitle"
-              label="文章标题"
+              label="Article Title"
               outlined
               dense
               class="mb-4"
@@ -14,7 +14,7 @@
 
             <v-text-field
               v-model="articleSummary"
-              label="文章摘要"
+              label="Article Summary"
               outlined
               dense
               class="mb-4"
@@ -22,7 +22,7 @@
 
             <v-text-field
               v-model="imageUrl"
-              label="封面图片URL"
+              label="Cover Image URL"
               outlined
               dense
               class="mb-4"
@@ -32,7 +32,7 @@
             <v-file-input
               v-model="imageFile"
               accept="image/*"
-              label="上传封面图片"
+              label="Upload Cover Image"
               prepend-icon="mdi-camera"
               @change="handleImageUpload"
               class="mb-4"
@@ -49,14 +49,14 @@
                 class="mr-4"
                 @click="handleCancel"
               >
-                取消
+                Cancel
               </v-btn>
               <v-btn
                 color="primary"
                 :loading="loading"
                 @click="handleSave"
               >
-                保存文章
+                Save Article
               </v-btn>
             </div>
           </v-card>
@@ -78,7 +78,7 @@
           v-bind="attrs"
           @click="snackbar.show = false"
         >
-          关闭
+          Close
         </v-btn>
       </template>
     </v-snackbar>
@@ -98,7 +98,7 @@ export default {
       articleSummary: '',
       imageUrl: '',
       imageFile: null,
-      articleContent: '<p>请输入文章内容...</p>',
+      articleContent: '<p>Please enter article content...</p>',
       loading: false,
       snackbar: {
         show: false,
@@ -120,7 +120,7 @@ export default {
       this.editor = new E(this.$refs.editor)
 
       this.editor.config.height = 500
-      this.editor.config.placeholder = '请输入内容...'
+      this.editor.config.placeholder = 'Please enter content...'
       
       this.editor.config.menus = [
         'head',
@@ -207,7 +207,7 @@ export default {
       if (!file) return;
       
       if (file.size > 2000000) {
-        this.showMessage('图片大小不能超过2MB', 'error');
+        this.showMessage('Image size cannot exceed 2MB', 'error');
         return;
       }
 
@@ -227,17 +227,17 @@ export default {
 
         if (response.data.code === 200) {
           this.imageUrl = response.data.data.url;
-          this.showMessage('图片上传成功', 'success');
+          this.showMessage('Image uploaded successfully', 'success');
         } else {
-          this.showMessage('图片上传失败: ' + response.data.message, 'error');
+          this.showMessage('Image upload failed: ' + response.data.message, 'error');
         }
       } catch (error) {
-        console.error('图片上传错误:', error);
-        let errorMessage = '文件可能太大';
+        console.error('Image upload error:', error);
+        let errorMessage = 'File might be too large';
         if (error.response && error.response.data && error.response.data.message) {
           errorMessage = error.response.data.message;
         }
-        this.showMessage('图片上传失败: ' + errorMessage, 'error');
+        this.showMessage('Image upload failed: ' + errorMessage, 'error');
       }
     },
 
@@ -258,18 +258,18 @@ export default {
         const response = await axios.post('/api/articles', articleData)
         
         if (response.data.code === 200) {
-          this.showMessage('文章保存成功', 'success')
+          this.showMessage('Article saved successfully', 'success')
           setTimeout(() => {
             this.$router.push('/articles')
           }, 1500)
         } else {
-          this.showMessage(response.data.message || '保存失败', 'error')
+          this.showMessage(response.data.message || 'Save failed', 'error')
         }
       } catch (error) {
-        console.error('保存文章错误:', error)
+        console.error('Save article error:', error)
         const errorMessage = error.response && error.response.data && error.response.data.message 
           ? error.response.data.message 
-          : '保存失败'
+          : 'Save failed'
         this.showMessage(errorMessage, 'error')
       } finally {
         this.loading = false
@@ -278,19 +278,19 @@ export default {
 
     validateForm() {
       if (!this.articleTitle.trim()) {
-        this.showMessage('请输入文章标题', 'error')
+        this.showMessage('Please enter article title', 'error')
         return false
       }
       if (!this.articleSummary.trim()) {
-        this.showMessage('请输入文章摘要', 'error')
+        this.showMessage('Please enter article summary', 'error')
         return false
       }
       if (!this.imageUrl.trim()) {
-        this.showMessage('请上传封面图片', 'error')
+        this.showMessage('Please upload cover image', 'error')
         return false
       }
       if (!this.editor.txt.html().trim()) {
-        this.showMessage('请输入文章内容', 'error')
+        this.showMessage('Please enter article content', 'error')
         return false
       }
       return true

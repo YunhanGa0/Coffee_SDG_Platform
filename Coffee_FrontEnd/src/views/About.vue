@@ -32,37 +32,37 @@
               but a force that can change lives, protect the environment, and promote community development.
             </p>
             <div class="value-chips d-flex flex-wrap justify-center">
-              <v-chip 
-                class="ma-2 value-chip" 
-                color="primary" 
-                outlined 
+              <v-chip
+                class="ma-2 value-chip"
+                color="primary"
+                outlined
                 large
               >
                 <v-icon left>mdi-handshake</v-icon>
                 Fair Trade
               </v-chip>
-              <v-chip 
-                class="ma-2 value-chip" 
-                color="primary" 
-                outlined 
+              <v-chip
+                class="ma-2 value-chip"
+                color="primary"
+                outlined
                 large
               >
                 <v-icon left>mdi-leaf</v-icon>
                 Environmental Sustainability
               </v-chip>
-              <v-chip 
-                class="ma-2 value-chip" 
-                color="primary" 
-                outlined 
+              <v-chip
+                class="ma-2 value-chip"
+                color="primary"
+                outlined
                 large
               >
                 <v-icon left>mdi-home-group</v-icon>
                 Community Support
               </v-chip>
-              <v-chip 
-                class="ma-2 value-chip" 
-                color="primary" 
-                outlined 
+              <v-chip
+                class="ma-2 value-chip"
+                color="primary"
+                outlined
                 large
               >
                 <v-icon left>mdi-cup</v-icon>
@@ -218,8 +218,8 @@
         </v-row>
         <v-row>
           <v-col cols="12" sm="6" md="4" v-for="(member, i) in teamMembers" :key="i">
-            <transition 
-              name="fade-up" 
+            <transition
+              name="fade-up"
               appear
               :style="{ transitionDelay: `${i * 0.1}s` }"
             >
@@ -331,7 +331,7 @@ export default {
         name: 'Li Yue',
         role: 'Chief Operating Officer',
         description: 'Focused on agricultural supply chain management, with extensive experience in connecting farmers with markets.',
-        photo: 'https://randomuser.me/api/portraits/women/44.jpg'
+        photo: require('@/assets/pic/zbh.jpg')
       },
       {
         name: 'Wang Wei',
@@ -554,7 +554,7 @@ export default {
   .mission-text {
     font-size: 1.1rem;
   }
-  
+
   .content-card {
     padding: 20px 0;
   }
@@ -564,11 +564,11 @@ export default {
   .animated-title {
     font-size: 2rem !important;
   }
-  
+
   .mission-text {
     font-size: 1rem;
   }
-  
+
   .value-chip {
     font-size: 0.85rem;
     margin: 4px !important;

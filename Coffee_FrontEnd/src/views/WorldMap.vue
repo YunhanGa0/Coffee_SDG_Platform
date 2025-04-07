@@ -42,7 +42,7 @@ export default {
         visualMap: {
           min: 0,
           max: 10000,
-          text: ['高', '低'],
+          text: ['High', 'Low'],
           realtime: false,
           calculable: true,
           inRange: {
@@ -51,7 +51,7 @@ export default {
         },
         series: [
           {
-            name: '星巴克全球分布',
+            name: 'Starbucks Global Distribution',
             type: 'map',
             mapType: 'world',
             roam: true,
@@ -70,7 +70,7 @@ export default {
                 color: '#fff'
               },
               itemStyle: {
-                areaColor: '#00704A'  // 使用星巴克绿色
+                areaColor: '#00704A'  // Starbucks green
               }
             },
             data: [

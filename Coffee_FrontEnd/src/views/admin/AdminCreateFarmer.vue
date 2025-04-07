@@ -6,7 +6,7 @@
           <v-card class="elevation-2">
             <v-card-title class="primary--text">
               <v-icon left color="primary">mdi-account-plus</v-icon>
-              创建农户账户
+              Create Farmer Account
             </v-card-title>
             <v-divider></v-divider>
             
@@ -18,7 +18,7 @@
                   <v-col cols="12" md="6">
                     <v-text-field
                       v-model="farmer.username"
-                      label="用户名"
+                      label="Username"
                       :rules="usernameRules"
                       required
                       outlined
@@ -29,7 +29,7 @@
                   <v-col cols="12" md="6">
                     <v-text-field
                       v-model="farmer.email"
-                      label="电子邮箱"
+                      label="Email"
                       :rules="emailRules"
                       type="email"
                       required
@@ -41,7 +41,7 @@
                   <v-col cols="12" md="6">
                     <v-text-field
                       v-model="farmer.password"
-                      label="密码"
+                      label="Password"
                       :rules="passwordRules"
                       :type="showPassword ? 'text' : 'password'"
                       required
@@ -55,7 +55,7 @@
                   <v-col cols="12" md="6">
                     <v-text-field
                       v-model="confirmPassword"
-                      label="确认密码"
+                      label="Confirm Password"
                       :rules="confirmPasswordRules"
                       :type="showConfirmPassword ? 'text' : 'password'"
                       required
@@ -99,13 +99,13 @@
                 :disabled="!valid || loading" 
                 @click="submitForm"
               >
-                创建账户
+                Create Account
               </v-btn>
               <v-btn 
                 text 
                 @click="$router.push('/admin')"
               >
-                返回
+                Return
               </v-btn>
             </v-card-actions>
           </v-card>
@@ -151,26 +151,26 @@ export default {
       },
       confirmPassword: '',
       usernameRules: [
-        v => !!v || '用户名不能为空',
-        v => (v && v.length >= 3) || '用户名至少需要3个字符'
+        v => !!v || 'Username is required',
+        v => (v && v.length >= 3) || 'Username must be at least 3 characters'
       ],
       emailRules: [
-        v => !!v || '邮箱不能为空',
-        v => /.+@.+\..+/.test(v) || '请输入有效的邮箱地址'
+        v => !!v || 'Email is required',
+        v => /.+@.+\..+/.test(v) || 'Email must be valid'
       ],
       passwordRules: [
-        v => !!v || '密码不能为空',
-        v => (v && v.length >= 6) || '密码至少需要6个字符'
+        v => !!v || 'Password is required',
+        v => (v && v.length >= 6) || 'Password must be at least 6 characters'
       ],
       confirmPasswordRules: [
-        v => !!v || '请确认密码',
-        v => v === this.farmer.password || '两次输入的密码不一致'
+        v => !!v || 'Please confirm password',
+        v => v === this.farmer.password || 'Passwords do not match'
       ],
       farmerHeaders: [
         { text: 'ID', value: 'id', width: '80px' },
-        { text: '用户名', value: 'username' },
-        { text: '邮箱', value: 'email' },
-        { text: '创建日期', value: 'createDate' }
+        { text: 'Username', value: 'username' },
+        { text: 'Email', value: 'email' },
+        { text: 'Create Date', value: 'createDate' }
       ],
       recentFarmers: [
         {
@@ -228,10 +228,8 @@ export default {
           this.errorMessage = response.data.message || '创建农户失败'
         }
       } catch (error) {
-        console.error('创建农户错误:', error)
-        this.errorMessage = error.response && error.response.data && error.response.data.message 
-          ? error.response.data.message 
-          : '创建农户失败，请重试'
+        console.error('Failed to create farmer account:', error)
+        this.errorMessage = 'Failed to create farmer account'
       } finally {
         this.loading = false
       }

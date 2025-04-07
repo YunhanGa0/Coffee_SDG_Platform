@@ -12,11 +12,11 @@
             <v-col cols="12" class="text-center">
               <div class="hero-content">
                 <h1 class="text-h2 font-weight-bold white--text mb-4 hero-title">
-                  咖啡农户支持计划
+                  Farmer Support
                 </h1>
                 <div class="divider-line mb-4"></div>
                 <p class="text-h5 white--text hero-subtitle">
-                  支持咖啡农户，共建可持续未来
+                  Support for coffee farmers, building a sustainable future together
                 </p>
                 <v-btn
                   color="primary"
@@ -24,7 +24,7 @@
                   class="mt-6 hero-btn"
                   depressed
                 >
-                  了解如何申请
+                  Learn More
                   <v-icon right>mdi-arrow-right</v-icon>
                 </v-btn>
               </div>
@@ -39,30 +39,30 @@
       <v-container>
         <v-row justify="center">
           <v-col cols="12" md="8" lg="7" class="text-center">
-            <h2 class="section-title text-center">我们的支持计划</h2>
+            <h2 class="section-title text-center">Our Support Plan</h2>
             <p class="intro-text">
-              OB咖啡农户支持计划旨在为全球咖啡种植者提供技术、资金和教育上的全方位帮助，
-              帮助他们提高咖啡品质，增加收入，同时促进环境可持续发展。
-              我们相信，通过赋能农户，可以共同创造更美好的咖啡产业生态系统。
+              OB coffee farmer support plan aims to provide technical, financial, and educational support to global coffee farmers,
+              helping them improve coffee quality, increase income, and promote environmental sustainability.
+              We believe that by empowering farmers, we can create a more beautiful coffee industry ecosystem together.
             </p>
             <div class="stats-row mt-8">
               <v-row>
                 <v-col cols="4">
                   <div class="stat-item">
                     <div class="stat-number primary--text">18,000+</div>
-                    <div class="stat-label">受益农户</div>
+                    <div class="stat-label">Benefited Farmers</div>
                   </div>
                 </v-col>
                 <v-col cols="4">
                   <div class="stat-item">
                     <div class="stat-number primary--text">12</div>
-                    <div class="stat-label">支持国家</div>
+                    <div class="stat-label">Supporting Countries</div>
                   </div>
                 </v-col>
                 <v-col cols="4">
                   <div class="stat-item">
                     <div class="stat-number primary--text">$8.5M</div>
-                    <div class="stat-label">投资金额</div>
+                    <div class="stat-label">Investment Amount</div>
                   </div>
                 </v-col>
               </v-row>
@@ -77,7 +77,7 @@
       <v-container>
         <v-row justify="center">
           <v-col cols="12" md="10" lg="9">
-            <h2 class="section-title text-center mb-10">支持项目</h2>
+            <h2 class="section-title text-center mb-10">Support Projects</h2>
             
             <!-- 可持续种植技术 -->
             <transition-group name="fade-up-stagger" tag="div">
@@ -95,29 +95,29 @@
                       class="fill-height card-image"
                     >
                       <div class="d-flex align-end justify-start fill-height pa-6">
-                        <div class="card-badge">技术</div>
+                        <div class="card-badge">Technology</div>
                       </div>
                     </v-img>
                   </v-col>
                   <v-col cols="12" md="7">
                     <v-card-text class="pa-6">
-                      <h2 class="text-h4 mb-4 card-title">可持续种植技术</h2>
+                      <h2 class="text-h4 mb-4 card-title">Sustainable Farming Technology</h2>
                       <p class="text-body-1 mb-4">
-                        我们提供创新的可持续种植技术和实践方法，帮助农户提高产量和品质，
-                        同时减少对环境的影响，应对气候变化挑战。
+                         We provide innovative sustainable farming technology and practices to help farmers increase yields and quality,
+                         while reducing environmental impact and addressing climate change challenges.
                       </p>
                       <div class="mb-6">
                         <div class="feature-item">
                           <v-icon color="primary" class="mr-2">mdi-sprout</v-icon>
-                          <span>有机肥与堆肥制作指导</span>
+                          <span>Organic Fertilizer and Compost Production Guide</span>
                         </div>
                         <div class="feature-item">
                           <v-icon color="primary" class="mr-2">mdi-weather-sunny</v-icon>
-                          <span>遮阴种植与水土保持技术</span>
+                          <span>Shade Planting and Soil Conservation Technology</span>
                         </div>
                         <div class="feature-item">
                           <v-icon color="primary" class="mr-2">mdi-bug-outline</v-icon>
-                          <span>生物多样性病虫害防治手册</span>
+                          <span>Biological Diversity Pest Control Manual</span>
                         </div>
                       </div>
                       <v-btn
@@ -127,7 +127,7 @@
                         class="card-btn"
                         @click="navigateToDetail('sustainable')"
                       >
-                        查看详情
+                        View Details
                         <v-icon right>mdi-arrow-right</v-icon>
                       </v-btn>
                     </v-card-text>
@@ -150,29 +150,28 @@
                       class="fill-height card-image"
                     >
                       <div class="d-flex align-end justify-start fill-height pa-6">
-                        <div class="card-badge">资金</div>
+                        <div class="card-badge">Funding</div>
                       </div>
                     </v-img>
                   </v-col>
                   <v-col cols="12" md="7">
                     <v-card-text class="pa-6">
-                      <h2 class="text-h4 mb-4 card-title">咖啡种植基金</h2>
+                      <h2 class="text-h4 mb-4 card-title">Coffee Farming Fund</h2>
                       <p class="text-body-1 mb-4">
-                        我们提供无息或低息贷款和资金支持，帮助农户获得发展所需的资金，
-                        用于农场改造、设备更新和提高生产效率的项目。
+                         We provide interest-free or low-interest loans and funding support to help farmers obtain the funds needed for farm renovation, equipment update, and project improvement.
                       </p>
                       <div class="mb-6">
                         <div class="feature-item">
                           <v-icon color="primary" class="mr-2">mdi-cash</v-icon>
-                          <span>农场基础设施改造资金</span>
+                          <span>Fund for Farm Infrastructure Renovation</span>
                         </div>
                         <div class="feature-item">
                           <v-icon color="primary" class="mr-2">mdi-seed</v-icon>
-                          <span>高品质种苗及种植补贴计划</span>
+                          <span>High-Quality Seedling and Planting Subsidy Plan</span>
                         </div>
                         <div class="feature-item">
                           <v-icon color="primary" class="mr-2">mdi-tools</v-icon>
-                          <span>加工设备现代化更新援助</span>
+                          <span>Modernization Update Assistance for Processing Equipment</span>
                         </div>
                       </div>
                       <v-btn
@@ -182,7 +181,7 @@
                         class="card-btn"
                         @click="navigateToDetail('fund')"
                       >
-                        查看详情
+                        View Details
                         <v-icon right>mdi-arrow-right</v-icon>
                       </v-btn>
                     </v-card-text>
@@ -205,29 +204,29 @@
                       class="fill-height card-image"
                     >
                       <div class="d-flex align-end justify-start fill-height pa-6">
-                        <div class="card-badge">认证</div>
+                        <div class="card-badge">Certification</div>
                       </div>
                     </v-img>
                   </v-col>
                   <v-col cols="12" md="7">
                     <v-card-text class="pa-6">
-                      <h2 class="text-h4 mb-4 card-title">申请甄选农场</h2>
+                      <h2 class="text-h4 mb-4 card-title">Application for Certified Farm</h2>
                       <p class="text-body-1 mb-4">
-                        通过我们的农场认证计划，符合可持续标准的农场可以获得更高的收购价格、
-                        稳定的购买承诺和全球市场推广机会。
+                         Through our farm certification program, farms that meet sustainable standards can obtain higher purchase prices,
+                         stable purchase commitments, and global market promotion opportunities.
                       </p>
                       <div class="mb-6">
                         <div class="feature-item">
                           <v-icon color="primary" class="mr-2">mdi-clipboard-check</v-icon>
-                          <span>农场可持续认证标准详解</span>
+                          <span>Detailed Explanation of Farm Sustainable Certification Standards</span>
                         </div>
                         <div class="feature-item">
                           <v-icon color="primary" class="mr-2">mdi-file-document</v-icon>
-                          <span>申请流程与所需文件指南</span>
+                          <span>Application Process and Required File Guide</span>
                         </div>
                         <div class="feature-item">
                           <v-icon color="primary" class="mr-2">mdi-handshake</v-icon>
-                          <span>OB农场合作权益与责任说明</span>
+                          <span>OB Farm Cooperation Rights and Responsibility Description</span>
                         </div>
                       </div>
                       <v-btn
@@ -237,7 +236,7 @@
                         class="card-btn"
                         @click="navigateToDetail('selection')"
                       >
-                        查看详情
+                        View Details
                         <v-icon right>mdi-arrow-right</v-icon>
                       </v-btn>
                     </v-card-text>
@@ -260,29 +259,29 @@
                       class="fill-height card-image"
                     >
                       <div class="d-flex align-end justify-start fill-height pa-6">
-                        <div class="card-badge">教育</div>
+                        <div class="card-badge">Education</div>
                       </div>
                     </v-img>
                   </v-col>
                   <v-col cols="12" md="7">
                     <v-card-text class="pa-6">
-                      <h2 class="text-h4 mb-4 card-title">在线学习资源</h2>
+                      <h2 class="text-h4 mb-4 card-title">Online Learning Resources</h2>
                       <p class="text-body-1 mb-4">
-                        我们提供丰富的在线学习资源和培训课程，包括视频教程、线上讲座和专家指导，
-                        帮助农户掌握最新的种植技术和管理知识。
+                         We provide rich online learning resources and training courses, including video tutorials, online lectures, and expert guidance,
+                         to help farmers master the latest farming technology and management knowledge.
                       </p>
                       <div class="mb-6">
                         <div class="feature-item">
                           <v-icon color="primary" class="mr-2">mdi-play-circle</v-icon>
-                          <span>咖啡种植与加工技术课程</span>
+                          <span>Coffee Planting and Processing Technology Course</span>
                         </div>
                         <div class="feature-item">
                           <v-icon color="primary" class="mr-2">mdi-school</v-icon>
-                          <span>全球专家在线指导与答疑</span>
+                          <span>Global Expert Online Guidance and Q&A</span>
                         </div>
                         <div class="feature-item">
                           <v-icon color="primary" class="mr-2">mdi-account-group</v-icon>
-                          <span>优秀农户经验分享社区</span>
+                          <span>Excellent Farmer Experience Sharing Community</span>
                         </div>
                       </div>
                       <v-btn
@@ -292,7 +291,7 @@
                         class="card-btn"
                         @click="navigateToDetail('learning')"
                       >
-                        查看详情
+                        View Details
                         <v-icon right>mdi-arrow-right</v-icon>
                       </v-btn>
                     </v-card-text>
@@ -310,7 +309,7 @@
       <v-container>
         <v-row justify="center">
           <v-col cols="12" md="10" lg="8" class="text-center">
-            <h2 class="section-title text-center mb-10">申请流程</h2>
+            <h2 class="section-title text-center mb-10">Application Process</h2>
             <v-stepper 
               alt-labels 
               class="process-stepper transparent-bg elevation-0"
@@ -322,7 +321,7 @@
                   color="primary"
                   complete
                 >
-                  填写申请
+                  Fill in Application
                 </v-stepper-step>
 
                 <v-divider></v-divider>
@@ -331,7 +330,7 @@
                   step="2" 
                   color="primary"
                 >
-                  初步审核
+                  Initial Review
                 </v-stepper-step>
 
                 <v-divider></v-divider>
@@ -340,7 +339,7 @@
                   step="3" 
                   color="primary"
                 >
-                  农场访问
+                  Farm Visit
                 </v-stepper-step>
 
                 <v-divider></v-divider>
@@ -349,7 +348,7 @@
                   step="4" 
                   color="primary"
                 >
-                  计划制定
+                  Plan Development
                 </v-stepper-step>
 
                 <v-divider></v-divider>
@@ -358,7 +357,7 @@
                   step="5" 
                   color="primary"
                 >
-                  合作开始
+                  Cooperation Begins
                 </v-stepper-step>
               </v-stepper-header>
             </v-stepper>
@@ -369,7 +368,7 @@
               class="mt-10"
               depressed
             >
-              立即申请
+              Apply Now
               <v-icon right>mdi-send</v-icon>
             </v-btn>
           </v-col>
@@ -382,9 +381,9 @@
       <v-container>
         <v-row justify="center">
           <v-col cols="12" class="text-center mb-8">
-            <h2 class="section-title text-center mb-2">成功案例</h2>
+            <h2 class="section-title text-center mb-2">Success Stories</h2>
             <p class="section-subtitle mb-8">
-              来自全球的农户通过我们的支持计划提升了生产力和生活质量
+              Farmers around the world have improved productivity and quality of life through our support plan
             </p>
           </v-col>
         </v-row>
@@ -413,7 +412,7 @@
                   color="primary"
                   small
                 >
-                  阅读更多
+                  Read More
                   <v-icon small right>mdi-chevron-right</v-icon>
                 </v-btn>
               </v-card-actions>
@@ -431,22 +430,45 @@ export default {
   data: () => ({
     successStories: [
       {
-        name: 'Carlos Mendez 家族农场',
-        location: '哥伦比亚 · 安蒂奥基亚',
-        description: 'Mendez家族通过OB的技术支持和有机种植补贴，将他们的咖啡产量提高了30%，同时获得了有机认证，使售价提升了40%。',
+        name: 'Carlos Mendez Family Farm',
+        location: 'Colombia · Antioquia',
+        description: 'Mendez family increased their coffee yield by 30% through OB\'s technical support and organic planting subsidy, and also obtained organic certification, raising the price by 40%.',
         image: 'https://dailycoffeenews.com/wp-content/uploads/2018/12/colombia-farmer-eibar-coffee.jpg'
       },
       {
-        name: 'Abeba Cooperative 农业合作社',
-        location: '埃塞俄比亚 · 耶加雪菲',
-        description: '这个由48个小型农户组成的合作社通过OB的资金支持，建立了现代化的水洗加工站，大幅提高了咖啡品质和农户收入。',
+        name: 'Abeba Cooperative Agricultural Cooperative',
+        location: 'Ethiopia · Yirgacheffe',
+        description: 'This 48-member small farmer cooperative established a modern water washing processing station through OB\'s funding support, greatly improving coffee quality and farmer income.',
         image: 'https://dailycoffeenews.com/wp-content/uploads/2019/10/Ethiopia-coffee-farmer.jpg'
       },
       {
-        name: 'Nguyen 家族农场',
-        location: '越南 · 中原',
-        description: 'Nguyen家族参与OB的可持续转型计划，从传统种植转向遮阴种植，不仅改善了咖啡品质，还恢复了当地生态系统。',
+        name: 'Nguyen Family Farm',
+        location: 'Vietnam · Central Highlands',
+        description: 'Nguyen family participated in OB\'s sustainable transformation plan, shifting from traditional planting to shade planting, not only improving coffee quality but also restoring local ecosystem.',
         image: 'https://www.perfectdailygrind.com/wp-content/uploads/2019/11/Vietnam.jpg'
+      }
+    ],
+    services: [
+      {
+        id: 1,
+        title: 'Sustainable Farming Resources',
+        description: 'Access guides and resources for sustainable coffee farming practices.',
+        image: require('@/assets/pic/coffee_pick.jpg'),
+        route: '/resources'
+      },
+      {
+        id: 2,
+        title: 'Funding Applications',
+        description: 'Apply for funding to support your coffee farming initiatives.',
+        image: require('@/assets/pic/coffee_pick.jpg'),
+        route: '/funding'
+      },
+      {
+        id: 3,
+        title: 'Certification Process',
+        description: 'Learn about the certification process for sustainable coffee farming.',
+        image: require('@/assets/pic/coffee_pick.jpg'),
+        route: '/certification'
       }
     ]
   }),
@@ -456,6 +478,10 @@ export default {
         name: 'ArticleList',
         query: { category: section }
       })
+    },
+    contactSupport() {
+      // 实现联系支持的逻辑
+      console.log('Contacting support')
     }
   }
 }

@@ -4,14 +4,14 @@
       <v-col cols="12" sm="8" md="4">
         <v-card class="elevation-12">
           <v-toolbar color="primary" dark flat>
-            <v-toolbar-title>登录</v-toolbar-title>
+            <v-toolbar-title>Login</v-toolbar-title>
           </v-toolbar>
           <v-card-text>
             <v-form ref="form" v-model="valid" lazy-validation @submit.prevent="handleLogin">
               <v-text-field
                 v-model="formData.username"
                 :rules="usernameRules"
-                label="用户名"
+                label="Username"
                 prepend-icon="mdi-account"
                 required
               ></v-text-field>
@@ -19,7 +19,7 @@
               <v-text-field
                 v-model="formData.password"
                 :rules="passwordRules"
-                label="密码"
+                label="Password"
                 prepend-icon="mdi-lock"
                 :type="showPassword ? 'text' : 'password'"
                 :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
@@ -37,11 +37,11 @@
               type="submit"
               class="mt-4"
             >
-              登录
+              Login
             </v-btn>
             <div class="text-center mt-4">
               <router-link to="/register" class="text-decoration-none">
-                没有账号？点此注册
+                No account? Register here
               </router-link>
             </div>
             
@@ -55,7 +55,7 @@
                 :loading="adminLoading"
               >
                 <v-icon left small>mdi-shield-account</v-icon>
-                获取管理员账户（测试用）
+                Get Admin Account (For Testing)
               </v-btn>
             </div>
           </v-card-actions>
@@ -77,7 +77,7 @@
           v-bind="attrs"
           @click="snackbar.show = false"
         >
-          关闭
+          Close
         </v-btn>
       </template>
     </v-snackbar>
@@ -98,10 +98,10 @@ export default {
       password: ''
     },
     usernameRules: [
-      v => !!v || '用户名不能为空'
+      v => !!v || 'Username is required'
     ],
     passwordRules: [
-      v => !!v || '密码不能为空'
+      v => !!v || 'Password is required'
     ],
     snackbar: {
       show: false,
@@ -119,11 +119,11 @@ export default {
         this.loading = true
         try {
           await this.login(this.formData)
-          this.showMessage('登录成功', 'success')
+          this.showMessage('Login successful', 'success')
           this.$router.push('/')
         } catch (error) {
-          console.error('登录错误：', error)
-          this.showMessage(error.message || '登录失败，请重试', 'error')
+          console.error('Login error:', error)
+          this.showMessage(error.message || 'Login failed, please try again', 'error')
         } finally {
           this.loading = false
         }
@@ -144,13 +144,13 @@ export default {
       
       try {
         const response = await this.$store.dispatch('auth/getAdminForTest')
-        console.log('管理员账户:', response)
+        console.log('Admin account:', response)
         
-        this.$emit('show-message', { text: '已登录管理员账户', color: 'success' })
+        this.$emit('show-message', { text: 'Logged in as admin', color: 'success' })
         this.$router.push('/admin')
       } catch (error) {
-        console.error('获取管理员账户失败:', error)
-        this.errorMessage = '获取管理员账户失败，请重试'
+        console.error('Failed to get admin account:', error)
+        this.errorMessage = 'Failed to get admin account, please try again'
       } finally {
         this.adminLoading = false
       }
