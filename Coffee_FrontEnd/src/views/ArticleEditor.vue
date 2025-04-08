@@ -145,17 +145,27 @@ export default {
         'redo'
       ]
 
-      // 配置图片上传
-      this.editor.config.uploadImgServer = '/api/articles/images/upload'
-      this.editor.config.uploadFileName = 'image'
-      this.editor.config.uploadImgHeaders = {
-        'Accept': 'application/json'
-      }
-      this.editor.config.uploadImgHooks = {
-        customInsert: (res, insertFn) => {
-          if (res.data && res.data.url) {
-            insertFn(res.data.url)
+      // 使用axios处理图片上传
+      this.editor.config.customUploadImg = async (resultFiles, insertImgFn) => {
+        try {
+          const formData = new FormData()
+          formData.append('image', resultFiles[0])
+          formData.append('type', 'CONTENT')
+          
+          const response = await axios.post('/api/articles/images/upload', formData, {
+            headers: {
+              'Content-Type': 'multipart/form-data'
+            }
+          })
+          
+          if (response.data.code === 200 && response.data.data.url) {
+            insertImgFn(response.data.data.url)
+          } else {
+            this.showMessage('Image upload failed', 'error')
           }
+        } catch (error) {
+          console.error('Image upload error:', error)
+          this.showMessage('Image upload failed', 'error')
         }
       }
 
