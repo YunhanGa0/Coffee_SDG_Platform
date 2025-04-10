@@ -149,7 +149,7 @@
             <transition name="fade-up-left" appear>
               <v-card class="overflow-hidden card-hover" elevation="8">
                 <v-img
-                  :src="require('@/assets/pic/星巴克研究员2.jpg')"
+                  :src="require('@/assets/pic/team.jpg')"
                   height="400"
                   class="ob-image"
                 >
@@ -176,7 +176,7 @@
                     <span class="text-h3 font-weight-black">OB</span>
                     <span class="text-subtitle-1 ml-2">OriginBoost</span>
                   </div>
-                  <h2 class="text-h4 font-weight-bold mb-6 secondary--text">OriginBoost Platform</h2>
+                  <h2 class="text-h4 font-weight-bold mb-6 secondary--text">OriginBoost Technology</h2>
                   <p class="text-body-1 mb-4">
                     <span class="font-weight-bold">Origin</span> represents agricultural origin, emphasizing the core position of farmers and farms.
                     <span class="font-weight-bold">Boost</span> represents enhancement and promotion, reflecting the goal of creating benefits and improving treatment for origin.
@@ -322,22 +322,34 @@ export default {
   data: () => ({
     teamMembers: [
       {
-        name: 'Zhang Ming',
+        name: 'Bohan Zhang',
         role: 'Founder and CEO',
         description: 'With 15 years of experience in the coffee industry, dedicated to promoting sustainable coffee cultivation and fair trade.',
-        photo: 'https://randomuser.me/api/portraits/men/32.jpg'
+        photo: require('@/assets/pic/张博涵.jpg')
       },
       {
-        name: 'Li Yue',
+        name: 'Yunhan Gao',
         role: 'Chief Operating Officer',
         description: 'Focused on agricultural supply chain management, with extensive experience in connecting farmers with markets.',
-        photo: require('@/assets/pic/zbh.jpg')
+        photo: require('@/assets/pic/高云瀚.jpg')
       },
       {
-        name: 'Wang Wei',
+        name: 'Le Liu',
         role: 'Director of Sustainable Development',
         description: 'PhD in Environmental Science, responsible for designing and implementing our sustainable development strategies and projects.',
-        photo: 'https://randomuser.me/api/portraits/men/62.jpg'
+        photo: require('@/assets/pic/刘乐.jpg')
+      },
+      {
+        name: 'Ziheng Wang',
+        role: 'Head of Technology',
+        description: 'Expert in blockchain and traceability systems, leading our efforts to create transparent supply chains for coffee production.',
+        photo: require('@/assets/pic/王子恒.jpg')
+      },
+      {
+        name: 'Sicheng Yi',
+        role: 'Community Manager',
+        description: 'Specializes in building relationships with coffee farming communities and implementing education programs for sustainable practices.',
+        photo: require('@/assets/pic/ysc.jpg')
       }
     ]
   })
