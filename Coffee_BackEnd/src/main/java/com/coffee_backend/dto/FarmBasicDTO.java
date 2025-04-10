@@ -9,15 +9,9 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class PageQueryRequest {
-
-    private Integer page = 0;
-
-    private Integer size = 10;
-
+public class FarmBasicDTO {
+    private Long id;
+    private String farmName;
     private String country;
-
-    private Boolean certified;
-
-    private Boolean published;
+    private String location;
 }

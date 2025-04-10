@@ -9,15 +9,6 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class PageQueryRequest {
-
-    private Integer page = 0;
-
-    private Integer size = 10;
-
-    private String country;
-
-    private Boolean certified;
-
+public class BlogPatchRequest {
     private Boolean published;
 }
