@@ -6,6 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import java.time.LocalDateTime;
+import com.coffee_backend.enumType.TrainingStatus;
+import com.coffee_backend.enumType.TrainingType;
 
 @Entity
 @Table(name = "technical_trainings")
@@ -25,13 +27,30 @@ public class TechnicalTraining {
     private String description;
 
     @Column(name = "start_time")
-    private LocalDateTime startTime;
+    private LocalDateTime startDate;
 
     @Column(name = "end_time")
-    private LocalDateTime endTime;
+    private LocalDateTime endDate;
 
-    @Column(name = "video_url")
-    private String videoUrl;
+    @Column(name = "max_participants")
+    private Integer maxParticipants;
+
+    @Column(name = "current_participants")
+    private Integer currentParticipants;
+
+    @Column(name = "training_type")
+    @Enumerated(EnumType.STRING)
+    private TrainingType type;
+    
+    @Column(name = "status")
+    @Enumerated(EnumType.STRING)
+    private TrainingStatus status;
+
+    @Column(name = "location")
+    private String location;
+
+    @Column(name = "image_url")
+    private String imageUrl;
 
     @Column(name = "create_time")
     private LocalDateTime createTime;

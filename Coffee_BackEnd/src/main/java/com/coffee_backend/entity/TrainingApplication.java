@@ -28,8 +28,6 @@ public class TrainingApplication {
     @Column(name = "application_time")
     private LocalDateTime applicationTime;
 
-    @Column(columnDefinition = "TEXT")
-    private String notes;
 
     @PrePersist
     protected void onCreate() {
