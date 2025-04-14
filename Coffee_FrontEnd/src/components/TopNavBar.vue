@@ -89,6 +89,9 @@
             >
               <v-icon left>mdi-account-circle</v-icon>
               {{ currentUser ? currentUser.username : 'User' }}
+              <v-avatar size="36" class="ml-2">
+                <v-img :src="getUserAvatar()"></v-img>
+              </v-avatar>
               <v-icon right>mdi-chevron-down</v-icon>
             </v-btn>
           </template>
@@ -180,6 +183,16 @@
         </template>
         <!-- 移动端的用户菜单 -->
         <template v-else>
+          <v-list-item>
+            <v-list-item-avatar>
+              <v-img :src="getUserAvatar()"></v-img>
+            </v-list-item-avatar>
+            <v-list-item-content>
+              <v-list-item-title>{{ currentUser ? currentUser.username : 'User' }}</v-list-item-title>
+              <v-list-item-subtitle>{{ userRoleText }}</v-list-item-subtitle>
+            </v-list-item-content>
+          </v-list-item>
+          <v-divider></v-divider>
           <v-list-item to="/profile">
             <v-list-item-icon>
               <v-icon>mdi-account-edit</v-icon>
@@ -233,11 +246,37 @@ export default {
     ...mapGetters('auth', ['isAuthenticated', 'currentUser']),
     isAdmin() {
       return this.currentUser && this.currentUser.role === 'ADMIN'
+    },
+    isFarmer() {
+      return this.currentUser && this.currentUser.role === 'FARMER'
+    },
+    userRoleText() {
+      if (!this.currentUser) return '';
+      
+      if (this.currentUser.role === 'ADMIN') {
+        return 'Administrator';
+      } else if (this.currentUser.role === 'FARMER') {
+        return 'Coffee Farmer';
+      } else {
+        return 'Regular User';
+      }
     }
   },
 
   methods: {
     ...mapActions('auth', ['logout']),
+    
+    getUserAvatar() {
+      if (!this.currentUser) return require('@/assets/pic/user.jpg');
+      
+      if (this.currentUser.role === 'ADMIN') {
+        return require('@/assets/pic/admin.jpg');
+      } else if (this.currentUser.role === 'FARMER') {
+        return require('@/assets/pic/farmer.jpg');
+      } else {
+        return require('@/assets/pic/user.jpg');
+      }
+    },
     
     async handleLogout() {
       try {
