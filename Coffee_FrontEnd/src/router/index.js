@@ -13,6 +13,8 @@ import ArticleList from '../views/ArticleList.vue'
 import ArticleDetail from '../views/ArticleDetail.vue'
 import AdminDashboard from '../views/admin/AdminDashboard.vue'
 import AdminCreateFarmer from '../views/admin/AdminCreateFarmer.vue'
+import FarmDetail from '../views/FarmDetail.vue'
+import FarmBlogDetail from '../views/FarmBlogDetail.vue'
 import store from '../store'
 
 Vue.use(VueRouter)
@@ -87,6 +89,16 @@ const routes = [
     name: 'AdminCreateFarmer',
     component: AdminCreateFarmer,
     meta: { requiresAuth: true, adminOnly: true }
+  },
+  {
+    path: '/farms/:id',
+    name: 'FarmDetail',
+    component: FarmDetail
+  },
+  {
+    path: '/farms/:farmId/blogs/:blogId',
+    name: 'FarmBlogDetail',
+    component: FarmBlogDetail
   }
 ]
 
