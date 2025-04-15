@@ -26,8 +26,6 @@ public class FinancialSupport {
 
     private BigDecimal budget;
 
-    @Column(name = "bean_price")
-    private BigDecimal beanPrice;
 
     @Column(name = "create_time")
     private LocalDateTime createTime;

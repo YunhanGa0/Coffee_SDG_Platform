@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import java.time.LocalDateTime;
+import com.coffee_backend.enumType.ApplicationStatus;
 
 @Entity
 @Table(name = "financial_applications")
@@ -27,6 +28,9 @@ public class FinancialApplication {
 
     @Column(columnDefinition = "TEXT", nullable = false)
     private String purpose;
+
+    @Enumerated(EnumType.STRING)
+    private ApplicationStatus status = ApplicationStatus.PENDING;
 
     @Column(name = "apply_time")
     private LocalDateTime applyTime;
