@@ -9,7 +9,7 @@ import 'echarts/map/js/world.js'
 Vue.config.productionTip = false
 
 // 配置axios 'http://uspa.zhangbh.com'
-axios.defaults.baseURL = process.env.VUE_APP_API_BASE_URL || 'http://uspa.zhangbh.com'
+axios.defaults.baseURL = process.env.VUE_APP_API_BASE_URL || 'http://localhost:8080'
 axios.defaults.headers.common['Content-Type'] = 'application/json'
 axios.defaults.headers.common['Accept'] = 'application/json'
 

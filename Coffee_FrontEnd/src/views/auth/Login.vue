@@ -36,6 +36,7 @@
               :loading="loading"
               type="submit"
               class="mt-4"
+              @click="handleLogin"
             >
               Login
             </v-btn>

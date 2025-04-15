@@ -138,8 +138,8 @@
 
       <v-row>
         <v-col
-          v-for="(estate, index) in estates"
-          :key="index"
+          v-for="(farm, index) in farms"
+          :key="farm.id"
           cols="12"
           md="4"
         >
@@ -149,7 +149,7 @@
               :elevation="hover ? 8 : 2"
             >
               <v-img
-                :src="estate.image"
+                :src="farm.imageUrl || require('@/assets/pic/plantation.jpg')"
                 height="250"
                 class="grey lighten-2"
               >
@@ -163,7 +163,7 @@
                       text
                       large
                       color="white"
-                      @click="exploreEstate(estate.id)"
+                      @click="exploreEstate(farm.id)"
                     >
                       View Details
                       <v-icon right>mdi-arrow-right</v-icon>
@@ -171,25 +171,67 @@
                   </div>
                 </v-expand-transition>
               </v-img>
-              <v-card-title class="primary--text">{{ estate.name }}</v-card-title>
-              <v-card-subtitle>Altitude: {{ estate.altitude }}</v-card-subtitle>
+              <v-card-title class="primary--text">{{ farm.farmName }}</v-card-title>
+              <v-card-subtitle>
+                {{ farm.country }} | Altitude: {{ farm.elevation }}m
+                <v-chip
+                  v-if="farm.isCertificated"
+                  color="success"
+                  x-small
+                  class="ml-2"
+                >
+                  Certified
+                </v-chip>
+              </v-card-subtitle>
               <v-card-text>
-                <p>{{ estate.description }}</p>
+                <p class="farm-description">{{ truncateDescription(farm.description) }}</p>
                 <v-chip-group>
                   <v-chip
-                    v-for="(tag, i) in estate.tags"
-                    :key="i"
                     x-small
                     class="mr-2 mt-2"
                     color="primary"
                     label
                   >
-                    {{ tag }}
+                    {{ farm.soilType ? formatSoilType(farm.soilType) : 'Coffee' }}
+                  </v-chip>
+                  <v-chip
+                    x-small
+                    class="mr-2 mt-2"
+                    color="primary"
+                    label
+                  >
+                    Est. {{ farm.establishedYear }}
                   </v-chip>
                 </v-chip-group>
               </v-card-text>
             </v-card>
           </v-hover>
+        </v-col>
+        <v-col cols="12" v-if="farms.length === 0" class="text-center">
+          <v-skeleton-loader
+            v-if="loading"
+            type="card, card, card"
+            class="mx-auto"
+          ></v-skeleton-loader>
+          <v-alert
+            v-else
+            type="info"
+            outlined
+          >
+            No farms available at the moment.
+          </v-alert>
+        </v-col>
+      </v-row>
+
+      <!-- Pagination -->
+      <v-row v-if="pagination.totalPages > 1">
+        <v-col cols="12" class="text-center">
+          <v-pagination
+            v-model="currentPage"
+            :length="pagination.totalPages"
+            :total-visible="7"
+            @input="fetchFarms"
+          ></v-pagination>
         </v-col>
       </v-row>
 
@@ -232,6 +274,8 @@
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
   name: 'Plantation',
   data: () => ({
@@ -241,45 +285,76 @@ export default {
       { value: '99%', label: 'Ethically Sourced Coffee' },
       { value: '50M+', label: 'Annual Investment (USD)' }
     ],
-    estates: [
-      {
-        id: 'costa-rica',
-        name: 'Costa Rica Estate',
-        altitude: '1,300-1,500m',
-        image: 'https://stories.starbucks.com/uploads/2019/05/SBX20190509-Costa-Rica-Hacienda-Alsacia-0018.jpg',
-        description: 'Costa Rica Hacienda Alsacia is Starbucks\' first coffee research and development center, focusing on sustainable cultivation technology research and promotion.',
-        tags: ['Arabica', 'R&D Base']
-      },
-      {
-        id: 'colombia',
-        name: 'Colombia Estate',
-        altitude: '1,200-1,800m',
-        image: 'https://stories.starbucks.com/uploads/2018/12/colombia-farmer-eibar-coffee.jpg',
-        description: 'Located in the Andes Mountains, the Colombia Estate is renowned for its unique geographical environment and traditional cultivation techniques.',
-        tags: ['Caturra', 'Organic Farming']
-      },
-      {
-        id: 'rwanda',
-        name: 'Rwanda Estate',
-        altitude: '1,500-2,000m',
-        image: 'https://stories.starbucks.com/uploads/2022/04/SBX20220401-Starbucks-Rwanda-1024x683.jpg',
-        description: 'The volcanic soil of the Rwanda Highlands gives the coffee here a unique taste, making it an important origin for specialty coffee.',
-        tags: ['Bourbon', 'Sustainable']
-      }
-    ]
+    farms: [],
+    loading: true,
+    currentPage: 1,
+    pageSize: 6,
+    pagination: {
+      totalPages: 0,
+      totalElements: 0,
+      first: true,
+      last: false,
+      empty: true
+    },
+    error: null
   }),
+  created() {
+    this.fetchFarms();
+  },
   methods: {
     scrollToContent() {
       const element = document.getElementById('content')
       element.scrollIntoView({ behavior: 'smooth' })
     },
-    exploreEstate(estate) {
-      console.log('Exploring estate:', estate)
-      // 这里可以添加跳转到具体庄园详情页的逻辑
+    exploreEstate(farmId) {
+      this.$router.push(`/farms/${farmId}`)
     },
     learnMore() {
       console.log('Learning more about our commitment')
       // 这里可以添加跳转到可持续发展承诺页面的逻辑
+    },
+    async fetchFarms() {
+      this.loading = true;
+      try {
+        const response = await axios.get(`/api/farms`, {
+          params: {
+            page: this.currentPage - 1,
+            size: this.pageSize,
+            certified: null
+          }
+        });
+        
+        if (response.data.code === 200) {
+          const data = response.data.data;
+          this.farms = data.content;
+          this.pagination = {
+            totalPages: data.totalPages,
+            totalElements: data.totalElements,
+            first: data.first,
+            last: data.last,
+            empty: data.empty
+          };
+        } else {
+          this.error = response.data.message || 'Failed to fetch farms';
+          console.error(this.error);
+        }
+      } catch (error) {
+        this.error = 'Error connecting to server';
+        console.error('Failed to fetch farms:', error);
+      } finally {
+        this.loading = false;
+      }
+    },
+    truncateDescription(description) {
+      if (!description) return 'No description available';
+      return description.length > 120 ? description.substring(0, 120) + '...' : description;
+    },
+    formatSoilType(soilType) {
+      if (!soilType) return 'Unknown';
+      return soilType.replace('_', ' ').toLowerCase()
+        .split(' ')
+        .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+        .join(' ');
     }
   }
 }
@@ -327,5 +402,14 @@ export default {
 
 .v-chip {
   font-weight: 500;
+}
+
+.farm-description {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  height: 4.5em;
 }
 </style>

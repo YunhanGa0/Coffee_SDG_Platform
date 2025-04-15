@@ -265,13 +265,13 @@
             </p>
           </v-col>
         </v-row>
-        
+
         <v-row>
-          <v-col 
-            cols="12" 
-            sm="6" 
-            md="4" 
-            v-for="(region, index) in coffeeRegions.slice(0, 6)" 
+          <v-col
+            cols="12"
+            sm="6"
+            md="4"
+            v-for="(region, index) in coffeeRegions.slice(0, 6)"
             :key="index"
           >
             <v-card class="compare-card card-hover h-100" @click="selectedRegion = region">
@@ -469,7 +469,7 @@ export default {
         '印度尼西亚': require('@/assets/pic/咖啡采集女2.jpg'),
         '越南': require('@/assets/pic/咖啡采集男2.jpg')
       }
-      
+
       return imageMap[regionName] || require('@/assets/pic/咖啡园区3.jpg')
     },
     handleSearch() {
@@ -681,7 +681,7 @@ export default {
   .wrapper {
     height: 50vh;
   }
-  
+
   .detail-value {
     font-size: 1rem;
   }
@@ -691,15 +691,15 @@ export default {
   .wrapper {
     height: 40vh;
   }
-  
+
   .region-name {
     font-size: 1.8rem !important;
   }
-  
+
   .detail-item {
     margin-bottom: 12px;
   }
-  
+
   .detail-icon {
     width: 32px;
     height: 32px;
