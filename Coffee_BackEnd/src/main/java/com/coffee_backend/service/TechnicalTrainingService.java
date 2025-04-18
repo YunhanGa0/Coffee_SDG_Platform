@@ -228,6 +228,10 @@ public class TechnicalTrainingService {
 
         TechnicalTraining training = optional.get();
 
+        if ((training.getStatus() != TrainingStatus.UPCOMING) && (training.getStatus() != TrainingStatus.ONGOING)){
+            return ApiResponse.error(400, "Training can not join");
+        }
+
         TrainingApplication application = new TrainingApplication();
         application.setTraining(training);
         application.setFarmer(user.get());
