@@ -8,4 +8,5 @@ public enum TrainingType {
     ORGANIC_CERTIFICATION, // 有机认证
     PEST_MANAGEMENT,      // 病虫害管理
     SOIL_MANAGEMENT       // 土壤管理
+    ;
 }

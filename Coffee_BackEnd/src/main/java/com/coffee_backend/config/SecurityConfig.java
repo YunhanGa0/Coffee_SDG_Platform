@@ -33,6 +33,7 @@ public class SecurityConfig {
                         .requestMatchers("/api/farms/**").permitAll()
                         .requestMatchers("/api/admin/**").permitAll()
                         .requestMatchers("/uploads/**").permitAll()
+                        .requestMatchers("/api/trainings/**").permitAll()
                         .anyRequest().authenticated()
                 )
                 .formLogin(AbstractHttpConfigurer::disable)

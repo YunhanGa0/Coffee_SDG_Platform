@@ -20,4 +20,8 @@ public class PageQueryRequest {
     private Boolean certified;
 
     private Boolean published;
+
+    private String type;
+
+    private String status;
 }
